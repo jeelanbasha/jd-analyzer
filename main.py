@@ -1,4 +1,5 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from anthropic import Anthropic
@@ -16,6 +17,22 @@ class JDRequest(BaseModel):
 class MatchRequest(BaseModel):
     jd_text: str
     resume_text: str
+
+@app.middleware("http")
+async def clean_request_body(request: Request, call_next):
+    if request.method == "POST" and "application/json" in request.headers.get("content-type", ""):
+        try:
+            body = await request.body()
+            body_str = body.decode("utf-8")
+            # remove control characters except normal whitespace
+            body_str = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', '', body_str)
+            body_bytes = body_str.encode("utf-8")
+            async def receive():
+                return {"type": "http.request", "body": body_bytes}
+            request._receive = receive
+        except Exception:
+            pass
+    return await call_next(request)    
 
 @app.get("/health")
 def health():
