@@ -11,44 +11,31 @@ load_dotenv()
 app = FastAPI(title="JD Analyzer API")
 client = Anthropic()
 
-class JDRequest(BaseModel):
-    jd_text: str
+def clean_text(text: str) -> str:
+    text = text.replace('\r\n', '\n').replace('\r', '\n')
+    text = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', '', text)
+    text = re.sub(r'[^\x00-\x7F]+', ' ', text)
+    text = re.sub(r'\n{3,}', '\n\n', text)
+    return text.strip()
 
-class MatchRequest(BaseModel):
-    jd_text: str
-    resume_text: str
-
-@app.middleware("http")
-async def clean_request_body(request: Request, call_next):
-    if request.method == "POST" and "application/json" in request.headers.get("content-type", ""):
-        try:
-            body = await request.body()
-            body_str = body.decode("utf-8")
-            # remove control characters except normal whitespace
-            body_str = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', '', body_str)
-            body_bytes = body_str.encode("utf-8")
-            async def receive():
-                return {"type": "http.request", "body": body_bytes}
-            request._receive = receive
-        except Exception:
-            pass
-    return await call_next(request)    
+def parse_body(raw: bytes) -> dict:
+    text = raw.decode("utf-8")
+    text = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', '', text)
+    return json.loads(text)
 
 @app.get("/health")
 def health():
     return {"status": "ok", "model": "claude-sonnet-4-5"}
 
-def clean_text(text: str) -> str:
-    # normalize whitespace and remove problematic characters
-    text = text.replace('\r\n', '\n').replace('\r', '\n')
-    text = re.sub(r'[^\x00-\x7F]+', ' ', text)  # remove non-ASCII
-    text = re.sub(r'\n{3,}', '\n\n', text)        # max 2 consecutive newlines
-    return text.strip()
-
 @app.post("/analyze-jd")
-def analyze_jd(request: JDRequest):
-    jd_text = clean_text(request.jd_text)
-    if not jd_text.strip():
+async def analyze_jd(request: Request):
+    try:
+        body = parse_body(await request.body())
+        jd_text = clean_text(body.get("jd_text", ""))
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Invalid request: {str(e)}")
+    
+    if not jd_text:
         raise HTTPException(status_code=400, detail="jd_text cannot be empty")
     
     message = client.messages.create(
@@ -84,11 +71,15 @@ Job description:
     }
 
 @app.post("/match-resume")
-def match_resume(request: MatchRequest):
-    jd_text = clean_text(request.jd_text)        # add this
-    resume_text = clean_text(request.resume_text)  # add this
+async def match_resume(request: Request):
+    try:
+        body = parse_body(await request.body())
+        jd_text = clean_text(body.get("jd_text", ""))
+        resume_text = clean_text(body.get("resume_text", ""))
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Invalid request: {str(e)}")
     
-    if not jd_text.strip() or not resume_text.strip():
+    if not jd_text or not resume_text:
         raise HTTPException(status_code=400, detail="Both fields required")
     
     message = client.messages.create(
@@ -108,7 +99,7 @@ Job description:
 {jd_text}
 
 Resume:
-{resume_text}"""        # change request.resume_text to resume_text
+{resume_text}"""
         }]
     )
     
