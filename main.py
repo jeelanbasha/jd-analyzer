@@ -11,6 +11,14 @@ load_dotenv()
 app = FastAPI(title="JD Analyzer API")
 client = Anthropic()
 
+# keep these for Swagger UI documentation
+class JDRequest(BaseModel):
+    jd_text: str
+
+class MatchRequest(BaseModel):
+    jd_text: str
+    resume_text: str
+
 def clean_text(text: str) -> str:
     text = text.replace('\r\n', '\n').replace('\r', '\n')
     text = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', '', text)
@@ -27,17 +35,25 @@ def parse_body(raw: bytes) -> dict:
 def health():
     return {"status": "ok", "model": "claude-sonnet-4-5"}
 
-@app.post("/analyze-jd")
+@app.post("/analyze-jd", response_model=None, openapi_extra={
+    "requestBody": {
+        "content": {
+            "application/json": {
+                "schema": JDRequest.model_json_schema()
+            }
+        }
+    }
+})
 async def analyze_jd(request: Request):
     try:
         body = parse_body(await request.body())
         jd_text = clean_text(body.get("jd_text", ""))
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Invalid request: {str(e)}")
-    
+
     if not jd_text:
         raise HTTPException(status_code=400, detail="jd_text cannot be empty")
-    
+
     message = client.messages.create(
         model="claude-sonnet-4-5",
         max_tokens=1024,
@@ -56,12 +72,12 @@ Job description:
 {jd_text}"""
         }]
     )
-    
+
     try:
         result = json.loads(message.content[0].text)
     except json.JSONDecodeError:
         result = {"raw": message.content[0].text}
-    
+
     return {
         "result": result,
         "usage": {
@@ -70,7 +86,15 @@ Job description:
         }
     }
 
-@app.post("/match-resume")
+@app.post("/match-resume", response_model=None, openapi_extra={
+    "requestBody": {
+        "content": {
+            "application/json": {
+                "schema": MatchRequest.model_json_schema()
+            }
+        }
+    }
+})
 async def match_resume(request: Request):
     try:
         body = parse_body(await request.body())
@@ -78,10 +102,10 @@ async def match_resume(request: Request):
         resume_text = clean_text(body.get("resume_text", ""))
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Invalid request: {str(e)}")
-    
+
     if not jd_text or not resume_text:
         raise HTTPException(status_code=400, detail="Both fields required")
-    
+
     message = client.messages.create(
         model="claude-sonnet-4-5",
         max_tokens=1024,
@@ -102,12 +126,12 @@ Resume:
 {resume_text}"""
         }]
     )
-    
+
     try:
         result = json.loads(message.content[0].text)
     except json.JSONDecodeError:
         result = {"raw": message.content[0].text}
-    
+
     return {
         "result": result,
         "usage": {
