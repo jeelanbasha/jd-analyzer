@@ -1,66 +1,64 @@
 # JD Analyzer
 
-Small helper that sends job descriptions to Anthropic's Claude model and returns an analysis (required skills, nice-to-have skills, years of experience, experience level, red flags).
+Analyzes job descriptions using the Claude API and extracts:
 
-**Files**
+- Required skills
+- Nice-to-have skills
+- Experience level
+- Red flags
 
-- `analyzer.py`: main script that calls the Anthropic SDK to analyze job descriptions.
-
-**Requirements**
-
-- Python 3.8+
-- `anthropic` Python SDK
-- `python-dotenv` (optional, for loading a local `.env` file)
-
-Install dependencies:
+## How to run
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
 pip install anthropic python-dotenv
-```
-
-**Setup**
-
-1. Obtain an Anthropic API key from your Anthropic account.
-2. Set the environment variable `ANTHROPIC_API_KEY` (example):
-
-```bash
-export ANTHROPIC_API_KEY="sk_..."
-```
-
-Alternatively create a `.env` file in the project root with:
-
-```
-ANTHROPIC_API_KEY=sk_...
-```
-
-and ensure `python-dotenv` is installed and loaded in `analyzer.py` if you want automatic loading.
-
-**Usage**
-
-Run the analyzer against the example sample JD provided in `analyzer.py`:
-
-```bash
+cp .env.example .env  # add your API key
 python analyzer.py
 ```
 
-The script will print the model's text response and a small usage dict with token counts.
+## Example output
 
-**Notes & suggestions**
+# Job Description Analysis
 
-- The current script returns the raw model text in `raw_response`. For reliable machine-readable output, modify the prompt to request strict JSON and parse it with `json.loads()`.
-- Ensure your environment has network access and that your API key has appropriate permissions — API usage may incur costs.
-- The script assumes the `anthropic` SDK response fields used in `analyzer.py` exist; if you see attribute errors, print the full `message` object to inspect the actual response shape.
+## 1. Required Skills
 
-**Example**
-Given a JD with `Senior Python Engineer` and `5+ years` you should expect the model to identify `Python`, `FastAPI`, `PostgreSQL` as required skills and list Kubernetes/Docker/Redis as nice-to-have.
+- Proficiency in at least one modern programming language (Python, C++, C#, or TypeScript)
+- SQL fundamentals
+- Hands-on experience with AI-assisted development tools (Claude, GitHub Copilot, or similar)
+- Demonstrable portfolio of projects built with AI tools
+- Familiarity with data pipeline/ETL concepts
+- Experience with at least one cloud environment (AWS preferred)
+- Problem-solving and analytical skills
+- Communication and teamwork skills
 
-**Development**
+## 2. Nice-to-Have Skills
 
-- Add unit tests around the parsing and change the prompt to return strict JSON for deterministic parsing.
-- Consider adding a CLI wrapper to analyze files or directories of JDs.
+- Unreal Engine experience
+- Unity, OpenGL, or other graphics/simulation frameworks
+- ML/AI workflows or training-data preparation
+- Experience with Palantir Foundry, dbt, Airflow, or Spark
+- Bachelor's or Master's degree in Computer Science, Computer Engineering, Software Engineering, or Game Design/Game Programming
 
----
+## 3. Years of Experience Required
 
-Created for the `jd-analyzer` project.
+**1-3 years** (listed as preferred, not required)
+
+## 4. Experience Level
+
+**Junior to Early-Mid Level**
+
+- Title includes "Assist senior engineers"
+- Entry-level responsibilities with supervision
+- 1-3 years preferred experience range
+
+## 5. Red Flags
+
+⚠️ **Moderate Concerns:**
+
+- **Vague company/mission details** - Mentions "consequential clean energy buildouts" and nuclear energy but doesn't name the company
+- **No salary range mentioned** - Lack of compensation transparency
+- **"Top talent" rhetoric** - May indicate high pressure or unrealistic expectations for a junior role
+
+⚠️ **Minor Concerns:**
+
+- Emphasis on "AI-assisted coding" as a core skill is relatively novel and may indicate over-reliance on tools
+- "Adhere to quality standards & complete assigned tasks within established timelines" suggests potentially rigid deadlines

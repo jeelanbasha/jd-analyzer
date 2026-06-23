@@ -41,12 +41,7 @@ Return as a structured format."""
 
 if __name__ == "__main__":
     # Test with a sample JD
-    sample_jd = """
-    Senior Python Engineer
-    5+ years of Python experience required
-    Experience with FastAPI, async/await, PostgreSQL
-    Nice to have: Kubernetes, Docker, Redis
-    """
+    sample_jd =  """"""
     
     result = analyze_job_description(sample_jd)
     print(result["raw_response"])

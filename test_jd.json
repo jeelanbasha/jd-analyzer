@@ -1,0 +1,44 @@
+{
+    "jd_text": "As Sr. Software Engineer - Flight Software you will be responsible for;
+Contribute to the development of new satellite flight software for U.S. satellite platforms
+Support development and integration of GNC algorithms
+Support development and modification of flight software hosted on new flight computer designs
+Develop in-house tools to analyze flight software performance and assess its compatibility with new mission and conops
+Develop and execute flight software verification and validation tests at the unit, module, subsystem, and platform level
+Develop and execute FSW verifications tests using both proprietary satellite digital twin software and a Hardware in the Loop (HIL) FlatSat.
+Establish and document test methodologies and descriptions to test compliance with customer-based requirements.
+Develop and implement software and tools for ground support equipment to test and validate flight software.
+Contribute to document management, including versioning, bug reporting, and test plan documentation.
+Oversee and conduct official validation tests.
+Support working groups, both internal and with customers and/or vendors
+Support proposal writing, new business
+Assess the software impacts of new hardware, conops, and missions
+ 
+Qualifications;
+
+Education:
+
+Bachelor's degree in STEM (Science, Technical, Engineering, Math) or related scientific areas.
+Preferred: Master's in STEM (Science, Technical, Engineering, Math) or related scientific areas.
+Experience:
+
+A minimum of 9 years with a Bachelor's degree, or 7 years with a Master's degree
+Proven track-record of working with space hardware and/or flight software systems, starting from conceptual designs and tradeoffs through detailed design, development, manufacture, integration, test, deployment, and operations.
+Knowledge, Skills, Demonstrated Capabilities:
+
+Insatiable curiosity and a demonstrated ability to learn and work independently
+Proficiency in C/C++
+Expertise in one or more of the following:
+GNC algorithms design, analysis, testing, and implementation
+New device bring-up
+BSP implementation
+Embedded software development and testing
+Cybersecurity
+Device driver development and testing of software/hardware interfaces
+Real-time operating systems programming, debugging, and testing
+Functional validation of embedded software on hardware
+Software safety assurance
+Network topology and configuration
+Simulators: numerical, emulator, and hardware in the loop
+Software requirements and configuration management"
+}
