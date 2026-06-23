@@ -27,8 +27,24 @@ def clean_text(text: str) -> str:
     return text.strip()
 
 def parse_body(raw: bytes) -> dict:
-    text = raw.decode("utf-8")
-    text = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]', '', text)
+    # decode
+    text = raw.decode("utf-8", errors="ignore")
+    
+    # strip ALL control characters except tab, newline, carriage return
+    text = re.sub(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]', '', text)
+    
+    # now find the jd_text value and clean inside it
+    # replace literal newlines inside JSON string values with \n escape
+    def clean_json_string(match):
+        content = match.group(1)
+        content = content.replace('\n', '\\n')
+        content = content.replace('\r', '\\r')
+        content = content.replace('\t', '\\t')
+        return f'"{content}"'
+    
+    # apply to all string values in the JSON
+    text = re.sub(r'"((?:[^"\\]|\\.)*)"', clean_json_string, text)
+    
     return json.loads(text)
 
 @app.get("/health")
