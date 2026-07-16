@@ -3,6 +3,6 @@ python-dotenv
 fastapi
 uvicorn
 chromadb
-sentence
+sentence-transformers
 httpx
 adzuna
