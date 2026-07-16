@@ -1,143 +1,142 @@
 {
   "report": {
-    "total_jobs_analyzed": 51,
+    "total_jobs_analyzed": 36,
     "top_required_skills": [
       {
         "skill": "machine learning",
-        "count": 10,
-        "percentage": 20
-      },
-      {
-        "skill": "software engineering",
-        "count": 8,
-        "percentage": 16
+        "count": 13,
+        "percentage": 36
       },
       {
         "skill": "ai",
-        "count": 6,
-        "percentage": 12
-      },
-      {
-        "skill": "agile methodology",
-        "count": 6,
-        "percentage": 12
-      },
-      {
-        "skill": "model training",
-        "count": 4,
-        "percentage": 8
+        "count": 5,
+        "percentage": 14
       },
       {
         "skill": "ai engineering",
         "count": 3,
-        "percentage": 6
-      },
-      {
-        "skill": "model deployment",
-        "count": 3,
-        "percentage": 6
+        "percentage": 8
       },
       {
         "skill": "ai research",
         "count": 3,
-        "percentage": 6
+        "percentage": 8
       },
       {
         "skill": "reinforcement learning",
         "count": 3,
-        "percentage": 6
+        "percentage": 8
       },
       {
         "skill": "data curation",
         "count": 3,
-        "percentage": 6
+        "percentage": 8
       },
       {
         "skill": "rl environments",
         "count": 3,
-        "percentage": 6
+        "percentage": 8
       },
       {
-        "skill": "data engineering",
-        "count": 3,
-        "percentage": 6
-      },
-      {
-        "skill": "llm engineering",
-        "count": 3,
-        "percentage": 6
-      },
-      {
-        "skill": "data analysis",
+        "skill": "model deployment",
         "count": 2,
-        "percentage": 4
+        "percentage": 6
       },
       {
-        "skill": "large language models",
+        "skill": "model training",
         "count": 2,
-        "percentage": 4
+        "percentage": 6
+      },
+      {
+        "skill": "large foundational models",
+        "count": 1,
+        "percentage": 3
+      },
+      {
+        "skill": "data modalities (language, vision, multimodal, structured data)",
+        "count": 1,
+        "percentage": 3
+      },
+      {
+        "skill": "modern model architectures",
+        "count": 1,
+        "percentage": 3
+      },
+      {
+        "skill": "silicon design",
+        "count": 1,
+        "percentage": 3
+      },
+      {
+        "skill": "chip design",
+        "count": 1,
+        "percentage": 3
+      },
+      {
+        "skill": "semiconductor experience",
+        "count": 1,
+        "percentage": 3
       }
     ],
     "top_nice_to_have": [
       {
         "skill": "experience with reasoning datasets",
         "count": 3,
-        "percentage": 6
+        "percentage": 8
       },
       {
         "skill": "agent development",
         "count": 3,
-        "percentage": 6
+        "percentage": 8
       },
       {
-        "skill": "analytics experience",
-        "count": 3,
+        "skill": "model training experience",
+        "count": 2,
         "percentage": 6
       },
       {
         "skill": "research experience",
-        "count": 2,
-        "percentage": 4
-      },
-      {
-        "skill": "startup experience",
-        "count": 2,
-        "percentage": 4
-      },
-      {
-        "skill": "financial services experience",
-        "count": 2,
-        "percentage": 4
-      },
-      {
-        "skill": "credit risk knowledge",
-        "count": 2,
-        "percentage": 4
-      },
-      {
-        "skill": "wholesale banking experience",
-        "count": 2,
-        "percentage": 4
-      },
-      {
-        "skill": "state-of-the-art research experience",
         "count": 1,
-        "percentage": 2
+        "percentage": 3
       },
       {
-        "skill": "experience with thermal noise computation",
+        "skill": "platform development",
         "count": 1,
-        "percentage": 2
+        "percentage": 3
+      },
+      {
+        "skill": "ml tools development",
+        "count": 1,
+        "percentage": 3
+      },
+      {
+        "skill": "stochastic computing",
+        "count": 1,
+        "percentage": 3
+      },
+      {
+        "skill": "in-memory computing",
+        "count": 1,
+        "percentage": 3
+      },
+      {
+        "skill": "asynchronous design",
+        "count": 1,
+        "percentage": 3
+      },
+      {
+        "skill": "ai inference optimization",
+        "count": 1,
+        "percentage": 3
       }
     ],
     "level_distribution": {
-      "senior": 13,
+      "senior": 6,
+      "not specified": 8,
+      "mid": 15,
+      "unknown": 4,
       "Not specified": 2,
-      "mid": 18,
-      "unknown": 7,
-      "not specified": 9,
-      "junior/mid/senior": 1,
-      "junior": 1
+      "junior/mid/senior": 1
     }
   },
   "analyses": [
@@ -148,25 +147,22 @@
       "required_skills": [
         "AI engineering",
         "large foundational models",
-        "language models",
-        "vision models",
-        "multimodal models",
-        "structured data",
-        "modern model architectures",
-        "machine learning platforms",
-        "machine learning tools"
+        "machine learning",
+        "data modalities (language, vision, multimodal, structured data)",
+        "modern model architectures"
       ],
       "nice_to_have": [
-        "state-of-the-art research experience"
+        "research experience",
+        "platform development",
+        "ML tools development"
       ],
       "level": "senior",
       "years_experience": "not specified",
       "red_flags": [
         "incomplete job description",
         "no specific responsibilities listed",
-        "vague requirements",
         "no compensation information",
-        "no team size or structure mentioned"
+        "vague requirements"
       ]
     },
     {
@@ -174,29 +170,47 @@
       "title": "AI Engineer",
       "company": "Normal Computing Corporation",
       "required_skills": [
-        "Silicon design",
-        "Chip design",
-        "AI inference",
-        "Semiconductor design",
-        "EDA systems",
+        "silicon design",
+        "chip design",
+        "semiconductor experience",
+        "AI hardware",
         "ASIC design",
-        "Hardware engineering",
-        "Stochastic computing",
-        "In-memory computing"
+        "EDA systems"
       ],
       "nice_to_have": [
-        "Experience with thermal noise computation",
-        "AI-native EDA tools",
-        "Full stack hardware design",
-        "Experience with semiconductor companies"
+        "stochastic computing",
+        "in-memory computing",
+        "asynchronous design",
+        "AI inference optimization"
       ],
-      "level": "Not specified",
+      "level": "not specified",
+      "years_experience": "not specified",
+      "red_flags": [
+        "incomplete job description",
+        "no specific role requirements listed",
+        "no compensation information",
+        "no responsibilities outlined"
+      ]
+    },
+    {
+      "job_id": "5697348318",
+      "title": "AI Engineer",
+      "company": "Recruiting From Scratch",
+      "required_skills": [
+        "AI",
+        "Machine Learning"
+      ],
+      "nice_to_have": [
+        "Experience with regulated institutions",
+        "Institutional AI solutions"
+      ],
+      "level": "senior",
       "years_experience": "Not specified",
       "red_flags": [
-        "Job description appears incomplete or truncated",
-        "No specific role or responsibilities listed",
-        "No compensation range mentioned",
-        "Missing key job details"
+        "Pre-seed funding stage - high risk",
+        "Job description appears incomplete/truncated",
+        "Very small team mentioned",
+        "Wide salary range ($210K-$350K) suggests unclear role definition"
       ]
     },
     {
@@ -219,7 +233,7 @@
         "Incomplete job description",
         "No specific technical requirements listed",
         "No clear responsibilities defined",
-        "Very broad salary range ($100K difference)"
+        "Very wide salary range ($100K difference)"
       ]
     },
     {
@@ -227,7 +241,6 @@
       "title": "AI Engineer",
       "company": "Recruiting From Scratch",
       "required_skills": [
-        "AI",
         "Artificial Intelligence",
         "Machine Learning"
       ],
@@ -236,10 +249,9 @@
       "years_experience": "Not specified",
       "red_flags": [
         "Incomplete job description",
-        "Lacks specific technical requirements",
-        "No clear role responsibilities listed",
-        "Missing education requirements",
-        "Missing team information"
+        "No specific technical requirements listed",
+        "No clear role responsibilities defined",
+        "Very wide salary range ($100K spread)"
       ]
     },
     {
@@ -249,22 +261,23 @@
       "required_skills": [
         "AI engineering",
         "machine learning",
-        "model deployment",
-        "intelligent systems development"
+        "system deployment",
+        "asset management domain knowledge",
+        "underwriting knowledge"
       ],
       "nice_to_have": [
         "real estate experience",
-        "asset management knowledge",
-        "healthcare real estate experience",
-        "multifamily real estate experience",
-        "commercial real estate experience"
+        "healthcare real estate knowledge",
+        "multifamily real estate knowledge",
+        "commercial real estate knowledge"
       ],
       "level": "mid",
       "years_experience": "not specified",
       "red_flags": [
         "incomplete job description",
-        "missing responsibilities and requirements",
-        "unclear role expectations"
+        "no specific technical requirements listed",
+        "no compensation information",
+        "vague role responsibilities"
       ]
     },
     {
@@ -276,7 +289,10 @@
       "level": "unknown",
       "years_experience": "unknown",
       "red_flags": [
-        "Incomplete job description"
+        "incomplete job description",
+        "missing specific requirements",
+        "no clear role responsibilities",
+        "no technical requirements listed"
       ]
     },
     {
@@ -285,11 +301,11 @@
       "company": "Pathwork",
       "required_skills": [
         "AI",
-        "insurance technology"
+        "engineering"
       ],
       "nice_to_have": [
-        "experience with insurance industry",
-        "experience building AI-native products"
+        "insurance industry knowledge",
+        "experience with AI-native platforms"
       ],
       "level": "mid",
       "years_experience": "not specified",
@@ -301,33 +317,33 @@
       ]
     },
     {
-      "job_id": "5562781679",
+      "job_id": "5696545973",
       "title": "AI Engineer",
-      "company": "Cinder",
+      "company": "Brooklyn Sports & Entertainment",
       "required_skills": [],
       "nice_to_have": [],
       "level": "unknown",
       "years_experience": "unknown",
       "red_flags": [
         "Job description appears to be incomplete or cut off",
-        "No specific role requirements listed",
-        "No responsibilities mentioned",
-        "No qualifications specified"
+        "No specific role or responsibilities mentioned",
+        "No qualifications or requirements listed",
+        "No clear job title provided"
       ]
     },
     {
-      "job_id": "5696545973",
+      "job_id": "5690363000",
       "title": "AI Engineer",
       "company": "Brooklyn Sports & Entertainment",
       "required_skills": [],
       "nice_to_have": [],
-      "level": "not specified",
+      "level": "mid",
       "years_experience": "not specified",
       "red_flags": [
-        "Incomplete job description",
-        "No specific role or responsibilities listed",
-        "No qualifications mentioned",
-        "No requirements provided"
+        "Job description appears to be incomplete or cut off",
+        "No specific role responsibilities mentioned",
+        "No qualifications or requirements listed",
+        "Unclear job title or position details"
       ]
     },
     {
@@ -335,7 +351,10 @@
       "title": "AI Engineer",
       "company": "Rebel Hotel Company",
       "required_skills": [
-        "AI Engineering"
+        "AI Engineering",
+        "Machine Learning",
+        "Technology",
+        "Revenue Strategy"
       ],
       "nice_to_have": [],
       "level": "mid",
@@ -343,9 +362,8 @@
       "red_flags": [
         "Incomplete job description",
         "Reports directly to CEO which may indicate unclear organizational structure",
-        "No specific technical requirements listed",
-        "No salary range provided",
-        "Vague responsibilities"
+        "No clear responsibilities or qualifications listed",
+        "Remote position with occasional travel requirements not clearly defined"
       ]
     },
     {
@@ -354,52 +372,23 @@
       "company": "Standard Template Labs",
       "required_skills": [
         "AI",
-        "Machine Learning",
-        "System Design"
+        "machine learning",
+        "machine learning systems design",
+        "deployment of ML systems"
       ],
       "nice_to_have": [
-        "Graph-based Architecture",
-        "ITSM Platform Experience",
-        "Enterprise Software"
+        "graph-based architecture",
+        "ITSM platform experience",
+        "IT Service Management",
+        "Configuration Management"
       ],
       "level": "mid",
-      "years_experience": "Not specified",
-      "red_flags": [
-        "Incomplete job description",
-        "Seed stage startup (high risk)",
-        "Years of experience not specified",
-        "Compensation not mentioned",
-        "Role responsibilities cut off"
-      ]
-    },
-    {
-      "job_id": "5750521851",
-      "title": "AI Engineer",
-      "company": "Metropolitan Commercial Bank",
-      "required_skills": [],
-      "nice_to_have": [],
-      "level": "not specified",
-      "years_experience": "not specified",
-      "red_flags": [
-        "Incomplete job description",
-        "No role responsibilities listed",
-        "No qualifications specified",
-        "No job title provided"
-      ]
-    },
-    {
-      "job_id": "5777232464",
-      "title": "AI Engineer",
-      "company": "NHL",
-      "required_skills": [],
-      "nice_to_have": [],
-      "level": "not specified",
       "years_experience": "not specified",
       "red_flags": [
         "incomplete job description",
-        "no specific responsibilities listed",
-        "no qualifications mentioned",
-        "no technical or job-specific requirements provided"
+        "seed stage startup",
+        "no compensation information",
+        "vague role requirements"
       ]
     },
     {
@@ -408,13 +397,14 @@
       "company": "Aviator",
       "required_skills": [],
       "nice_to_have": [],
-      "level": "not specified",
-      "years_experience": "not specified",
+      "level": "Not specified",
+      "years_experience": "Not specified",
       "red_flags": [
-        "Job description is incomplete",
-        "No specific role or responsibilities mentioned",
-        "No required qualifications listed",
-        "Missing key job details"
+        "Incomplete job description",
+        "No role title specified",
+        "No responsibilities listed",
+        "No qualifications mentioned",
+        "No required skills listed"
       ]
     },
     {
@@ -426,11 +416,10 @@
       "level": "not specified",
       "years_experience": "not specified",
       "red_flags": [
-        "Incomplete job description",
-        "No role details provided",
-        "No responsibilities listed",
-        "No qualifications mentioned",
-        "Missing essential job information"
+        "Job description appears incomplete or cut off",
+        "No specific role details provided",
+        "No requirements or qualifications listed",
+        "Only contains company overview information"
       ]
     },
     {
@@ -448,106 +437,49 @@
       "level": "unknown",
       "years_experience": "unknown",
       "red_flags": [
-        "incomplete job description"
+        "Job description is incomplete/truncated",
+        "No specific role requirements listed",
+        "No clear job responsibilities mentioned"
       ]
     },
     {
-      "job_id": "5766191410",
-      "title": "Machine Learning Engineer",
-      "company": "Bespoke Labs",
+      "job_id": "5695446794",
+      "title": "AI Engineer",
+      "company": "Techire Ai",
       "required_skills": [
-        "AI research",
-        "reinforcement learning",
-        "data curation",
-        "model training",
-        "RL environments"
+        "AI agent architecture design",
+        "Machine learning systems",
+        "Production AI systems",
+        "Learning framework development",
+        "Enterprise AI systems"
       ],
       "nice_to_have": [
-        "experience with reasoning datasets",
-        "SOTA model development",
-        "agent development",
-        "experience with digital world environments"
+        "Fine-tuning experience",
+        "Knowledge graph systems",
+        "Reinforcement learning"
       ],
       "level": "senior",
-      "years_experience": "not specified",
+      "years_experience": "Not specified",
       "red_flags": [
-        "incomplete job description",
-        "no clear responsibilities outlined",
-        "no specific requirements listed",
-        "vague description of role",
-        "no information about compensation or benefits",
-        "no team size or structure mentioned"
-      ]
-    },
-    {
-      "job_id": "5766190405",
-      "title": "Machine Learning Engineer",
-      "company": "Bespoke Labs",
-      "required_skills": [
-        "AI research",
-        "reinforcement learning",
-        "data curation",
-        "model training",
-        "RL environments"
-      ],
-      "nice_to_have": [
-        "experience with reasoning datasets",
-        "agent development",
-        "digital world simulation"
-      ],
-      "level": "mid",
-      "years_experience": "not specified",
-      "red_flags": [
-        "incomplete job description",
-        "no clear responsibilities listed",
-        "no compensation mentioned",
-        "vague requirements",
-        "job description cuts off mid-sentence"
-      ]
-    },
-    {
-      "job_id": "5766191178",
-      "title": "Machine Learning Engineer",
-      "company": "Bespoke Labs",
-      "required_skills": [
-        "AI research",
-        "reinforcement learning",
-        "RL environments",
-        "data curation",
-        "model training"
-      ],
-      "nice_to_have": [
-        "experience with reasoning datasets",
-        "agent development",
-        "experience with SOTA models"
-      ],
-      "level": "mid",
-      "years_experience": "not specified",
-      "red_flags": [
-        "incomplete job description",
-        "no specific responsibilities listed",
-        "no compensation mentioned",
-        "vague role description",
-        "no team size or structure information"
+        "Job description appears incomplete or cut off",
+        "Vague technical requirements",
+        "No clear team size or structure mentioned",
+        "Missing key details about responsibilities"
       ]
     },
     {
       "job_id": "5528375904",
       "title": "Machine Learning Engineer II, Logistics AI",
       "company": "Instacart",
-      "required_skills": [
-        "grocery delivery",
-        "logistics",
-        "customer service"
-      ],
+      "required_skills": [],
       "nice_to_have": [],
       "level": "not specified",
       "years_experience": "not specified",
       "red_flags": [
         "incomplete job description",
-        "no specific role requirements listed",
-        "no compensation information",
-        "no clear responsibilities outlined"
+        "missing role requirements",
+        "no technical specifications",
+        "no qualifications listed"
       ]
     },
     {
@@ -561,8 +493,23 @@
       "red_flags": [
         "incomplete job description",
         "no specific role requirements listed",
-        "no technical or functional skills mentioned",
-        "missing key job details"
+        "missing job responsibilities",
+        "no technical skills mentioned",
+        "no qualifications provided"
+      ]
+    },
+    {
+      "job_id": "5781344516",
+      "title": "Machine Learning Engineer II, Logistics AI",
+      "company": "Instacart",
+      "required_skills": [],
+      "nice_to_have": [],
+      "level": "not specified",
+      "years_experience": "not specified",
+      "red_flags": [
+        "incomplete job description",
+        "no specific role or requirements listed",
+        "missing key information about position, responsibilities, and qualifications"
       ]
     },
     {
@@ -575,32 +522,24 @@
       "years_experience": "not specified",
       "red_flags": [
         "incomplete job description",
-        "no role responsibilities listed",
-        "no qualifications mentioned",
-        "no specific position title"
+        "no responsibilities listed",
+        "no qualifications specified",
+        "no requirements mentioned"
       ]
     },
     {
-      "job_id": "5528373298",
+      "job_id": "5781344489",
       "title": "Machine Learning Engineer New Grad 2024-2025 -Remote",
       "company": "Quora",
-      "required_skills": [
-        "knowledge sharing platform experience",
-        "AI language models",
-        "platform development"
-      ],
-      "nice_to_have": [
-        "experience with chatbots",
-        "experience with high-traffic platforms"
-      ],
+      "required_skills": [],
+      "nice_to_have": [],
       "level": "not specified",
       "years_experience": "not specified",
       "red_flags": [
-        "no specific job requirements listed",
-        "incomplete job description",
-        "no role responsibilities defined",
-        "no technical requirements specified",
-        "no qualifications mentioned"
+        "Incomplete job description",
+        "No specific role requirements listed",
+        "No responsibilities mentioned",
+        "No qualifications specified"
       ]
     },
     {
@@ -619,9 +558,9 @@
       "years_experience": "Not specified",
       "red_flags": [
         "Job description appears incomplete or cut off",
-        "No specific technical requirements listed",
-        "Vague responsibilities",
-        "Posted by recruiting agency rather than direct employer"
+        "Lack of specific technical requirements",
+        "No clear years of experience specified",
+        "Vague role description"
       ]
     },
     {
@@ -629,17 +568,21 @@
       "title": "Machine Learning Engineer",
       "company": "exacare ai",
       "required_skills": [
-        "Machine Learning Operations",
-        "ML infrastructure",
-        "Production ML systems",
-        "Workflow automation",
-        "Data engineering"
+        "Machine Learning Engineering",
+        "MLOps",
+        "Infrastructure development",
+        "Production systems",
+        "Workflow automation"
       ],
-      "nice_to_have": [],
+      "nice_to_have": [
+        "Research collaboration experience",
+        "Cost optimization",
+        "Scalability design"
+      ],
       "level": "mid",
-      "years_experience": "not specified",
+      "years_experience": "Not specified",
       "red_flags": [
-        "Job description appears incomplete or cut off"
+        "Incomplete job description"
       ]
     },
     {
@@ -648,22 +591,22 @@
       "company": "Spotify",
       "required_skills": [
         "Machine Learning",
-        "ML Engineering",
         "Building ML systems",
-        "Performance analysis",
-        "Data insights"
+        "Data analysis",
+        "Performance modeling"
       ],
       "nice_to_have": [
         "Music industry knowledge",
-        "Promotion platform experience",
-        "Creator tools experience"
+        "Promotion/marketing experience",
+        "Product development experience"
       ],
       "level": "mid",
-      "years_experience": "Not specified",
+      "years_experience": "not specified",
       "red_flags": [
-        "Job description appears incomplete/truncated",
-        "No clear requirements listed",
-        "Vague role description"
+        "Job description appears incomplete/cut off",
+        "Lack of specific technical requirements",
+        "No clear experience requirements stated",
+        "Vague role expectations"
       ]
     },
     {
@@ -674,16 +617,16 @@
         "Machine Learning"
       ],
       "nice_to_have": [
-        "AI detection systems",
-        "Research experience"
+        "AI detection systems experience",
+        "Research publication experience"
       ],
       "level": "junior/mid/senior",
-      "years_experience": "All levels",
+      "years_experience": "not specified",
       "red_flags": [
-        "In-person only requirement in Brooklyn, New York",
-        "Incomplete job description",
-        "No specific technical requirements listed",
-        "No compensation information"
+        "Job description appears incomplete or truncated",
+        "Lacks specific technical requirements",
+        "No compensation information",
+        "Vague job responsibilities"
       ]
     },
     {
@@ -692,51 +635,27 @@
       "company": "Teleskope",
       "required_skills": [],
       "nice_to_have": [],
-      "level": "unknown",
-      "years_experience": "unknown",
+      "level": "not specified",
+      "years_experience": "not specified",
       "red_flags": [
         "incomplete job description",
-        "no specific role requirements listed",
-        "missing key job details"
-      ]
-    },
-    {
-      "job_id": "5653832558",
-      "title": "Machine Learning Engineer",
-      "company": "Finch",
-      "required_skills": [],
-      "nice_to_have": [],
-      "level": "unknown",
-      "years_experience": "unknown",
-      "red_flags": [
-        "Job description is incomplete or cut off",
-        "No specific role or position mentioned",
-        "No responsibilities listed",
-        "No qualifications or requirements specified"
+        "no role requirements listed",
+        "no specific position title mentioned"
       ]
     },
     {
       "job_id": "5780124345",
       "title": "Machine Learning Engineer",
       "company": "WireScreen",
-      "required_skills": [
-        "supply chain knowledge",
-        "intelligence platform experience",
-        "risk analysis",
-        "data analysis"
-      ],
-      "nice_to_have": [
-        "startup experience",
-        "China market knowledge",
-        "journalism background"
-      ],
-      "level": "mid",
-      "years_experience": "not specified",
+      "required_skills": [],
+      "nice_to_have": [],
+      "level": "unknown",
+      "years_experience": "unknown",
       "red_flags": [
-        "incomplete job description",
-        "no specific role or responsibilities listed",
-        "no compensation information",
-        "unclear position requirements"
+        "Job description appears incomplete or truncated",
+        "No specific role or position title mentioned",
+        "No clear responsibilities or qualifications listed",
+        "Missing key job details"
       ]
     },
     {
@@ -751,21 +670,20 @@
         "Maxwell's equations",
         "Helmholtz equations",
         "heat equations",
-        "machine learning",
-        "model architecture design"
+        "machine learning"
       ],
       "nice_to_have": [
-        "electronics experience",
-        "firmware experience",
-        "electrical engineering background"
+        "electrical engineering",
+        "firmware",
+        "software engineering"
       ],
       "level": "senior",
       "years_experience": "not specified",
       "red_flags": [
-        "job description appears incomplete or cut off",
-        "no compensation information",
-        "no years of experience specified",
-        "vague company description"
+        "job description appears incomplete or truncated",
+        "no salary range provided",
+        "limited information about team size or structure",
+        "unclear role scope - description cuts off mid-sentence"
       ]
     },
     {
@@ -775,13 +693,94 @@
       "required_skills": [],
       "nice_to_have": [],
       "level": "mid",
-      "years_experience": "Not specified",
+      "years_experience": "not specified",
       "red_flags": [
-        "Incomplete job description",
-        "No specific role or responsibilities mentioned",
-        "No required qualifications listed",
-        "Missing compensation information",
-        "Truncated content"
+        "Job description is incomplete or cut off",
+        "No specific job responsibilities listed",
+        "No required qualifications mentioned",
+        "Vague job requirements"
+      ]
+    },
+    {
+      "job_id": "5766191178",
+      "title": "Machine Learning Engineer",
+      "company": "Bespoke Labs",
+      "required_skills": [
+        "AI research",
+        "reinforcement learning",
+        "data curation",
+        "machine learning models",
+        "RL environments"
+      ],
+      "nice_to_have": [
+        "experience with reasoning datasets",
+        "model training experience",
+        "agent development",
+        "familiarity with OpenThoughts",
+        "experience with MiniCheck or MiniChart"
+      ],
+      "level": "senior",
+      "years_experience": "not specified",
+      "red_flags": [
+        "incomplete job description",
+        "no clear responsibilities listed",
+        "no compensation mentioned",
+        "vague role description",
+        "no team size information",
+        "no required qualifications specified"
+      ]
+    },
+    {
+      "job_id": "5766191410",
+      "title": "Machine Learning Engineer",
+      "company": "Bespoke Labs",
+      "required_skills": [
+        "AI research",
+        "data curation",
+        "reinforcement learning",
+        "RL environments"
+      ],
+      "nice_to_have": [
+        "experience with reasoning datasets",
+        "model training experience",
+        "agent development",
+        "experience with OpenThoughts or similar datasets"
+      ],
+      "level": "mid",
+      "years_experience": "not specified",
+      "red_flags": [
+        "incomplete job description",
+        "no clear responsibilities outlined",
+        "no required qualifications listed",
+        "vague role description",
+        "missing compensation information",
+        "no team structure information"
+      ]
+    },
+    {
+      "job_id": "5766190405",
+      "title": "Machine Learning Engineer",
+      "company": "Bespoke Labs",
+      "required_skills": [
+        "AI research",
+        "data curation",
+        "reinforcement learning",
+        "RL environments",
+        "model training"
+      ],
+      "nice_to_have": [
+        "experience with reasoning datasets",
+        "SOTA model development",
+        "agent development",
+        "digital world simulation"
+      ],
+      "level": "mid",
+      "years_experience": "not specified",
+      "red_flags": [
+        "incomplete job description",
+        "no clear responsibilities outlined",
+        "no experience requirements specified",
+        "vague role description"
       ]
     },
     {
@@ -804,8 +803,8 @@
       "red_flags": [
         "Job description appears incomplete or cut off",
         "No years of experience specified",
-        "No salary range mentioned",
-        "Minimal detail on responsibilities"
+        "No compensation information",
+        "Missing key responsibilities details"
       ]
     },
     {
@@ -818,394 +817,47 @@
       "years_experience": "Not specified",
       "red_flags": [
         "Job description is incomplete/truncated",
-        "No specific role or position mentioned",
-        "No requirements or qualifications listed",
-        "No responsibilities outlined"
+        "No specific role requirements listed",
+        "No clear job responsibilities mentioned",
+        "Missing technical or professional requirements"
       ]
     },
     {
-      "job_id": "5452289662",
-      "title": "LLM Engineer (GenAI, NYC)",
-      "company": "GPTZero",
+      "job_id": "5798566590",
+      "title": "Lead Machine Learning Engineer",
+      "company": "The Walt Disney Company",
       "required_skills": [
-        "AI detection",
-        "machine learning",
-        "software engineering"
+        "Machine Learning",
+        "Advanced Analytics",
+        "Data Strategy",
+        "Cross-platform Measurement"
       ],
       "nice_to_have": [
-        "experience at high-growth tech companies",
-        "background from Meta, Perplexity, AWS, or Affirm"
+        "Media Industry Experience",
+        "Content Measurement",
+        "Inventory Forecasting"
       ],
-      "level": "unknown",
+      "level": "senior",
+      "years_experience": "Not specified",
+      "red_flags": [
+        "Not a remote role",
+        "Relocation required",
+        "Job description appears incomplete/truncated"
+      ]
+    },
+    {
+      "job_id": "5797735514",
+      "title": "LLM Engineer",
+      "company": "Bright Vision Technologies",
+      "required_skills": [],
+      "nice_to_have": [],
+      "level": "mid",
       "years_experience": "unknown",
       "red_flags": [
-        "job description appears incomplete or cut off",
-        "no specific role or responsibilities mentioned",
-        "no technical requirements specified",
-        "missing compensation information",
-        "unclear what position is being hired for"
-      ]
-    },
-    {
-      "job_id": "5702332169",
-      "title": "Machine Learning Engineer (LLM / Personalization)",
-      "company": "Qloo",
-      "required_skills": [
-        "Taste AI technology",
-        "data analysis",
-        "consumer behavior analysis",
-        "sentiment analysis"
-      ],
-      "nice_to_have": [
-        "recommendation systems",
-        "travel industry knowledge",
-        "hospitality industry knowledge"
-      ],
-      "level": "unknown",
-      "years_experience": "not specified",
-      "red_flags": [
-        "incomplete job description",
-        "no specific role or responsibilities listed",
-        "no qualifications mentioned",
-        "no compensation information"
-      ]
-    },
-    {
-      "job_id": "5787574219",
-      "title": "Large Language Model Engineer - AI & Human Health Research",
-      "company": "Mount Sinai Health System",
-      "required_skills": [
-        "LLM Engineering",
-        "Large Language Models",
-        "Retrieval-Augmented Generation (RAG)",
-        "Agentic platforms",
-        "Chatbot development",
-        "Data infrastructure design",
-        "Model validation pipelines",
-        "AI systems deployment"
-      ],
-      "nice_to_have": [
-        "Clinical domain knowledge",
-        "Healthcare AI experience"
-      ],
-      "level": "junior",
-      "years_experience": "2-4",
-      "red_flags": [
-        "Job description appears incomplete or cut off"
-      ]
-    },
-    {
-      "job_id": "5475260674",
-      "title": "Forward Deployed Engineer, Lead - LLM Post-training",
-      "company": "Reflection",
-      "required_skills": [
-        "technical leadership",
-        "post-training",
-        "evaluation capabilities",
-        "AI/machine learning"
-      ],
-      "nice_to_have": [
-        "experience at DeepMind, OpenAI, Google Brain, Meta, Character.AI, or Anthropic"
-      ],
-      "level": "senior",
-      "years_experience": "not specified",
-      "red_flags": [
-        "job description is incomplete/truncated"
-      ]
-    },
-    {
-      "job_id": "5723905749",
-      "title": "Lead Software Engineer- Python/Analytics",
-      "company": "JPMorganChase",
-      "required_skills": [
-        "Software Engineering",
-        "Agile methodologies",
-        "Technology solutions development",
-        "Secure and scalable system design"
-      ],
-      "nice_to_have": [],
-      "level": "senior",
-      "years_experience": "Not specified",
-      "red_flags": [
-        "Job description appears incomplete or cut off",
-        "Lack of specific technical requirements",
-        "No mention of compensation or benefits",
-        "Vague role responsibilities"
-      ]
-    },
-    {
-      "job_id": "5721558802",
-      "title": "Senior Lead Software Engineer Analytics - Python",
-      "company": "JPMorganChase",
-      "required_skills": [
-        "software engineering",
-        "agile methodology",
-        "technical solutions",
-        "multiple technical areas"
-      ],
-      "nice_to_have": [
-        "financial services experience",
-        "credit risk knowledge",
-        "wholesale banking experience"
-      ],
-      "level": "senior",
-      "years_experience": "not specified",
-      "red_flags": [
-        "incomplete job description",
-        "missing key details about responsibilities",
-        "missing required qualifications",
-        "missing years of experience requirement"
-      ]
-    },
-    {
-      "job_id": "5721371827",
-      "title": "Lead Software Engineer Analytics - Python",
-      "company": "JPMorganChase",
-      "required_skills": [
-        "Software Engineering",
-        "Agile methodology",
-        "Technical solutions development"
-      ],
-      "nice_to_have": [
-        "Credit Risk knowledge",
-        "Analytics experience",
-        "JPMorgan Chase systems experience"
-      ],
-      "level": "senior",
-      "years_experience": "Not specified",
-      "red_flags": [
-        "Job description appears incomplete or truncated",
-        "Missing specific technical requirements",
-        "Lacks clear responsibilities and qualifications"
-      ]
-    },
-    {
-      "job_id": "5722632039",
-      "title": "Technical Recruiter",
-      "company": "Doctronic",
-      "required_skills": [
-        "technical recruiting",
-        "sourcing engineers",
-        "building recruiting processes",
-        "working with engineering leadership",
-        "candidate evaluation"
-      ],
-      "nice_to_have": [
-        "healthcare industry experience",
-        "AI company recruiting experience",
-        "startup experience"
-      ],
-      "level": "mid",
-      "years_experience": "not specified",
-      "red_flags": [
-        "first technical recruiting hire - no existing team or support",
-        "incomplete job description - cuts off mid-sentence",
-        "building process from scratch with no framework",
-        "likely high pressure environment given pace expectations"
-      ]
-    },
-    {
-      "job_id": "5785197248",
-      "title": "Staff Machine Learning Engineer, CustomerLake (ML/LLM)",
-      "company": "Databricks",
-      "required_skills": [
-        "data engineering",
-        "data platform experience"
-      ],
-      "nice_to_have": [],
-      "level": "mid",
-      "years_experience": "not specified",
-      "red_flags": [
-        "incomplete job description",
-        "missing key details about responsibilities",
-        "missing requirements section",
-        "missing compensation information"
-      ]
-    },
-    {
-      "job_id": "5734741966",
-      "title": "AI Solutions Engineer",
-      "company": "Next League",
-      "required_skills": [
-        "AI solutions design",
-        "AI solutions development",
-        "AI solutions deployment"
-      ],
-      "nice_to_have": [],
-      "level": "mid",
-      "years_experience": "not specified",
-      "red_flags": [
-        "Contract-to-hire position with lower full-time salary than contract rate",
-        "Job description appears incomplete or cut off"
-      ]
-    },
-    {
-      "job_id": "5793163649",
-      "title": "Lead Software Engineer- Python/Analytics",
-      "company": "JPMorgan Chase Bank, N.A.",
-      "required_skills": [
-        "Software Engineering",
-        "Agile methodology",
-        "Technology solutions",
-        "Leadership"
-      ],
-      "nice_to_have": [],
-      "level": "senior",
-      "years_experience": "Not specified",
-      "red_flags": [
-        "Job description is incomplete/truncated",
-        "Missing specific technical requirements",
-        "Missing years of experience requirement",
-        "Vague responsibilities"
-      ]
-    },
-    {
-      "job_id": "5793163684",
-      "title": "Lead Software Engineer Analytics - Python",
-      "company": "JPMorgan Chase Bank, N.A.",
-      "required_skills": [
-        "software engineering",
-        "agile methodology",
-        "technical solutions design",
-        "cross-functional collaboration"
-      ],
-      "nice_to_have": [
-        "JPMorgan Chase internal experience",
-        "wholesale credit risk knowledge",
-        "analytics experience",
-        "financial services background"
-      ],
-      "level": "senior",
-      "years_experience": "not specified",
-      "red_flags": [
-        "incomplete job description",
-        "vague responsibilities",
-        "missing technical requirements",
-        "no specific qualifications listed"
-      ]
-    },
-    {
-      "job_id": "5790256967",
-      "title": "Senior Lead Software Engineer Analytics - Python",
-      "company": "JPMorgan Chase Bank, N.A.",
-      "required_skills": [
-        "Software Engineering",
-        "Agile methodology",
-        "Technical solutions design",
-        "Leadership"
-      ],
-      "nice_to_have": [
-        "Credit Risk domain knowledge",
-        "Analytics experience",
-        "Wholesale banking experience"
-      ],
-      "level": "senior",
-      "years_experience": "Not specified",
-      "red_flags": [
-        "Job description appears truncated or incomplete",
-        "Missing key details about required technologies",
-        "No clear compensation or benefits information",
-        "Vague job responsibilities"
-      ]
-    },
-    {
-      "job_id": "5795433712",
-      "title": "Technical Program Manager (AI/LLM)",
-      "company": "I8IS INC.",
-      "required_skills": [
-        "Program management",
-        "Technical background",
-        "Client engagement",
-        "Strategic planning",
-        "Analytical skills",
-        "Risk assessment",
-        "Risk mitigation planning",
-        "Azure DevOps (ADO) dashboard",
-        "Agentic AI applications",
-        "LangGraph",
-        "LangMem frameworks",
-        "LLM architectures",
-        "Prompt engineering",
-        "Agentic framework"
-      ],
-      "nice_to_have": [],
-      "level": "senior",
-      "years_experience": "Not specified",
-      "red_flags": [
-        "Years of experience not specified",
-        "Vague job requirements with 'good knowledge' and 'good understanding'",
-        "Long term contract instead of full-time position",
-        "Grammatical errors ('understating' instead of 'understanding', 'asses' instead of 'assess')"
-      ]
-    },
-    {
-      "job_id": "5750394433",
-      "title": "Principal AI/ML Engineer, Semantic Data",
-      "company": "Major League Soccer",
-      "required_skills": [
-        "AI/ML engineering",
-        "Semantic data systems",
-        "LLM engineering",
-        "Data platforms",
-        "Fan intelligence",
-        "Personalization",
-        "Production-grade AI"
-      ],
-      "nice_to_have": [
-        "Sports industry experience",
-        "Fan data experience"
-      ],
-      "level": "senior",
-      "years_experience": "8-10+",
-      "red_flags": [
-        "Job description appears truncated or incomplete"
-      ]
-    },
-    {
-      "job_id": "5787561717",
-      "title": "Senior Lead Software Engineer - Python/AWS/AI/LLM",
-      "company": "JPMorganChase",
-      "required_skills": [
-        "Python",
-        "AWS",
-        "AI",
-        "LLM",
-        "Agile methodology",
-        "Software engineering",
-        "Technology product development"
-      ],
-      "nice_to_have": [
-        "Asset Wealth Management experience",
-        "Financial services experience"
-      ],
-      "level": "senior",
-      "years_experience": "7-10",
-      "red_flags": [
-        "Job description appears incomplete or truncated"
-      ]
-    },
-    {
-      "job_id": "5502625447",
-      "title": "Applied AI Engineer - Agent",
-      "company": "The General Intelligence Company of New York",
-      "required_skills": [
-        "Backend development",
-        "LLM engineering",
-        "Agent systems",
-        "Evaluation pipelines",
-        "Python"
-      ],
-      "nice_to_have": [
-        "Research experience",
-        "Production ML systems",
-        "Instrumentation and monitoring"
-      ],
-      "level": "mid",
-      "years_experience": "Not specified",
-      "red_flags": [
-        "Job description appears incomplete or cut off",
-        "No clear requirements or qualifications listed",
-        "Vague scope and responsibilities"
+        "Job description appears to be incomplete or cut off",
+        "No specific requirements or qualifications listed",
+        "No technical skills or responsibilities mentioned",
+        "Vague company description with no concrete details"
       ]
     }
   ]

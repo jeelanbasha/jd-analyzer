@@ -3,6 +3,8 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from anthropic import Anthropic
+from app.mentor_agent import run_mentor_agent
+from typing import Optional
 import json
 import re
 
@@ -18,6 +20,34 @@ class JDRequest(BaseModel):
 class MatchRequest(BaseModel):
     jd_text: str
     resume_text: str
+
+class MentorRequest(BaseModel):
+    roles: list[str]
+    location: str
+    resume_text: Optional[str] = ""
+
+@app.post("/mentor/analyze-market")
+async def analyze_market(request: Request):
+    try:
+        body = parse_body(await request.body())
+        roles = body.get("roles", ["AI Engineer"])
+        location = body.get("location", "New York")
+        resume_text = body.get("resume_text", "")
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Invalid request: {str(e)}")
+
+    if not roles or not location:
+        raise HTTPException(status_code=400, detail="roles and location are required")
+
+    try:
+        result = await run_mentor_agent(
+            roles=roles,
+            location=location,
+            resume_text=resume_text
+        )
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Mentor agent failed: {str(e)}")
 
 def clean_text(text: str) -> str:
     text = text.replace('\r\n', '\n').replace('\r', '\n')
