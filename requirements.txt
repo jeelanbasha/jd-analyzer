@@ -2,3 +2,7 @@ anthropic
 python-dotenv
 fastapi
 uvicorn
+chromabd
+sentence
+httpx
+adzuna
