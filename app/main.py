@@ -7,6 +7,8 @@ from app.mentor_agent import run_mentor_agent
 from typing import Optional
 import json
 import re
+import uuid
+import asyncio
 
 load_dotenv()
 
@@ -185,3 +187,47 @@ Resume:
             "output_tokens": message.usage.output_tokens
         }
     }
+
+# in-memory job store
+jobs = {}
+
+@app.post("/mentor/start")
+async def start_mentor(request: Request):
+    try:
+        body = parse_body(await request.body())
+        roles = body.get("roles", ["AI Engineer"])
+        location = body.get("location", "New York")
+        resume_text = body.get("resume_text", "")
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Invalid request: {str(e)}")
+
+    if not roles or not location:
+        raise HTTPException(status_code=400, detail="roles and location are required")
+
+    job_id = str(uuid.uuid4())[:8]
+    jobs[job_id] = {"status": "running", "result": None}
+
+    async def run():
+        try:
+            result = await run_mentor_agent(
+                roles=roles,
+                location=location,
+                resume_text=resume_text
+            )
+            jobs[job_id] = {"status": "done", "result": result}
+        except Exception as e:
+            jobs[job_id] = {"status": "error", "error": str(e)}
+
+    asyncio.create_task(run())
+
+    return {
+        "job_id": job_id,
+        "status": "running",
+        "message": "Job started. Poll /mentor/status/{job_id} for results."
+    }
+
+@app.get("/mentor/status/{job_id}")
+def get_status(job_id: str):
+    if job_id not in jobs:
+        raise HTTPException(status_code=404, detail="Job not found")
+    return jobs[job_id]
