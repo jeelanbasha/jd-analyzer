@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from anthropic import Anthropic
 from app.mentor_agent import run_mentor_agent
 from typing import Optional
+from fastapi.middleware.cors import CORSMiddleware
 import json
 import re
 import uuid
@@ -13,6 +14,13 @@ import asyncio
 load_dotenv()
 
 app = FastAPI(title="JD Analyzer API")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 client = Anthropic()
 
 # keep these for Swagger UI documentation
