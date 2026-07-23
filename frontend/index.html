@@ -850,19 +850,9 @@ function removeRole(i) {
 async function handleFile(input) {
   const file = input.files[0];
   if (!file) return;
-
   document.getElementById('upload-name').textContent = file.name;
-
-  const ext = file.name.split('.').pop().toLowerCase();
-
-  if (ext === 'txt') {
-    resumeText = await file.text();
-  } else if (ext === 'pdf' || ext === 'doc' || ext === 'docx') {
-    resumeText = await file.text().catch(() => '');
-    if (!resumeText || resumeText.length < 50) {
-      resumeText = `Resume file: ${file.name}. Professional with experience in software development, Python, APIs, and modern web technologies.`;
-    }
-  }
+  resumeText = await file.text();
+  console.log('Resume loaded:', resumeText.length, 'chars');
 }
 
 function showError(msg) {
@@ -985,16 +975,23 @@ function renderResults(data) {
   btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Refresh analysis`;
 
   // Skills
-  const skillsList = document.getElementById('skills-list');
-  skillsList.innerHTML = (data.top_required_skills || []).slice(0, 10).map(s => `
+ const skillsList = document.getElementById('skills-list');
+skillsList.innerHTML = (data.top_required_skills || []).slice(0, 10).map(s => {
+  const name = s.skill.toUpperCase().split(' ').map(w =>
+    ['AI','LLM','ML','API','SQL','AWS','GCP','NLP','CV','ASIC','EDA','BSP'].includes(w.toUpperCase())
+      ? w.toUpperCase()
+      : w.charAt(0).toUpperCase() + w.slice(1)
+  ).join(' ');
+  return `
     <div class="skill-bar-row">
-      <span class="skill-name">${s.skill}</span>
+      <span class="skill-name">${name}</span>
       <div class="skill-bar-wrap">
         <div class="skill-bar-fill" data-pct="${s.percentage}"></div>
       </div>
       <span class="skill-pct">${s.percentage}%</span>
     </div>
-  `).join('');
+  `;
+}).join('');
 
   setTimeout(() => {
     document.querySelectorAll('.skill-bar-fill').forEach(el => {
