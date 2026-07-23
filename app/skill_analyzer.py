@@ -5,7 +5,10 @@ from collections import Counter
 from app.ingestion import JobPosting
 from typing import Optional
 
-ANALYZER_URL = "http://localhost:8000/analyze-jd"
+ANALYZER_URL = os.getenv(
+    "ANALYZER_URL",
+    "http://localhost:8000/analyze-jd"
+)
 
 async def analyze_single_job(
     client: httpx.AsyncClient,
