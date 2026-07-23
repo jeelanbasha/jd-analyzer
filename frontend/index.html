@@ -1002,18 +1002,20 @@ skillsList.innerHTML = (data.top_required_skills || []).slice(0, 10).map(s => {
 
   // Jobs
   const jobsList = document.getElementById('jobs-list');
-  const posted = j.created ? new Date(j.created).toLocaleDateString() : '';
-  jobsList.innerHTML = (data.similar_to_profile || []).map(j => `
-    <a href="${j.url}" target="_blank" rel="noopener" class="job-card">
-      <div class="job-sim">${Math.round(j.similarity * 100)}%</div>
+jobsList.innerHTML = (data.similar_to_profile || []).map(job => {
+  const posted = job.created ? new Date(job.created).toLocaleDateString() : '';
+  return `
+    <a href="${job.url}" target="_blank" rel="noopener" class="job-card">
+      <div class="job-sim">${Math.round(job.similarity * 100)}%</div>
       <div class="job-info">
-        <div class="job-title">${j.title}</div>
-        <div class="job-company">${j.company}</div>
-        <div class="job-location">${j.location}${posted ? ' · ' + posted : ''}</div>
+        <div class="job-title">${job.title}</div>
+        <div class="job-company">${job.company}</div>
+        <div class="job-location">${job.location}${posted ? ' · ' + posted : ''}</div>
       </div>
       <div class="job-arrow">→</div>
     </a>
-  `).join('') || '<div style="font-size:13px;color:var(--gray)">Upload your resume for personalized matches.</div>';
+  `;
+}).join('') || '<div style="font-size:13px;color:var(--gray)">Upload your resume for personalized matches.</div>';
 
   // Levels
   const levelList = document.getElementById('level-list');
