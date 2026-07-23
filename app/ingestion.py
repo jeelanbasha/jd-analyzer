@@ -20,6 +20,7 @@ class JobPosting(BaseModel):
     salary_min: Optional[float] = None
     salary_max: Optional[float] = None
     url: str
+    created: Optional[str] = None
 
 def parse_job(raw: dict) -> JobPosting:
     return JobPosting(
@@ -31,12 +32,14 @@ def parse_job(raw: dict) -> JobPosting:
         salary_min=raw.get("salary_min"),
         salary_max=raw.get("salary_max"),
         url=raw.get("redirect_url", "")
+        created=raw.get("created", "")
     )
 
 async def fetch_jobs(
     role: str,
     location: str = "United States",
-    count: int = 20
+    count: int = 20,
+    experience_level: str = ""
 ) -> list[JobPosting]:
     params = {
         "app_id": ADZUNA_APP_ID,
@@ -44,9 +47,17 @@ async def fetch_jobs(
         "what": role,
         "where": location,
         "results_per_page": count,
-        "full_time": 1,
         "content-type": "application/json"
     }
+
+    # map our levels to Adzuna's expected experience ranges
+    exp_map = {
+        "junior": "1",
+        "mid": "3",
+        "senior": "6"
+    }
+    if experience_level and experience_level in exp_map:
+        params["experience"] = exp_map[experience_level]
 
     async with httpx.AsyncClient() as client:
         response = await client.get(
@@ -56,15 +67,17 @@ async def fetch_jobs(
         )
         response.raise_for_status()
         data = response.json()
+
     jobs = [parse_job(job) for job in data.get("results", [])]
     print(f"Fetched {len(jobs)} jobs for '{role}' in '{location}'")
     return jobs
 
 async def fetch_multiple_roles(
     roles: list[str],
-    location: str = "remote"
+    location: str = "United States",
+    experience_level: str = ""
 ) -> list[JobPosting]:
-    tasks = [fetch_jobs(role, location) for role in roles]
+    tasks = [fetch_jobs(role, location, experience_level=experience_level) for role in roles]
     results = await asyncio.gather(*tasks, return_exceptions=True)
 
     all_jobs = []

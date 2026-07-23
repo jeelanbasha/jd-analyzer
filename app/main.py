@@ -206,11 +206,9 @@ async def start_mentor(request: Request):
         roles = body.get("roles", ["AI Engineer"])
         location = body.get("location", "New York")
         resume_text = body.get("resume_text", "")
+        experience_level = body.get("experience_level", "")
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Invalid request: {str(e)}")
-
-    if not roles or not location:
-        raise HTTPException(status_code=400, detail="roles and location are required")
 
     job_id = str(uuid.uuid4())[:8]
     jobs[job_id] = {"status": "running", "result": None}
@@ -220,19 +218,15 @@ async def start_mentor(request: Request):
             result = await run_mentor_agent(
                 roles=roles,
                 location=location,
-                resume_text=resume_text
+                resume_text=resume_text,
+                experience_level=experience_level
             )
             jobs[job_id] = {"status": "done", "result": result}
         except Exception as e:
             jobs[job_id] = {"status": "error", "error": str(e)}
 
     asyncio.create_task(run())
-
-    return {
-        "job_id": job_id,
-        "status": "running",
-        "message": "Job started. Poll /mentor/status/{job_id} for results."
-    }
+    return {"job_id": job_id, "status": "running", "message": "Job started."}
 
 @app.get("/mentor/status/{job_id}")
 def get_status(job_id: str):

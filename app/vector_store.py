@@ -42,6 +42,7 @@ def store_jobs(jobs: list[JobPosting]) -> None:
             "company": job.company,
             "location": job.location,
             "url": job.url,
+            "created": job.created or "",
             "salary_min": str(job.salary_min or ""),
             "salary_max": str(job.salary_max or "")
         } for job in jobs]

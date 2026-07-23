@@ -893,7 +893,8 @@ async function analyze() {
       body: JSON.stringify({
         roles,
         location,
-        resume_text: resumeText || `Software developer with experience in ${roles.join(', ')} and related technologies.`
+        experience_level: document.getElementById('experience').value,
+        resume_text: resumeText || `Software developer with experience in ${roles.join(', ')}.`
       })
     });
 
@@ -1001,13 +1002,14 @@ skillsList.innerHTML = (data.top_required_skills || []).slice(0, 10).map(s => {
 
   // Jobs
   const jobsList = document.getElementById('jobs-list');
+  const posted = j.created ? new Date(j.created).toLocaleDateString() : '';
   jobsList.innerHTML = (data.similar_to_profile || []).map(j => `
     <a href="${j.url}" target="_blank" rel="noopener" class="job-card">
       <div class="job-sim">${Math.round(j.similarity * 100)}%</div>
       <div class="job-info">
         <div class="job-title">${j.title}</div>
         <div class="job-company">${j.company}</div>
-        <div class="job-location">${j.location}</div>
+        <div class="job-location">${j.location}${posted ? ' · ' + posted : ''}</div>
       </div>
       <div class="job-arrow">→</div>
     </a>

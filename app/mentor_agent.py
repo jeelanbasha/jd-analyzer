@@ -6,12 +6,13 @@ from app.skill_analyzer import analyze_jobs_batch, compute_skill_frequency
 async def run_mentor_agent(
     roles: list[str],
     location: str,
-    resume_text: str = ""
-) -> dict:
-
-    print(f"[Mentor] Fetching jobs for {roles} in {location}...")
-    jobs = await fetch_multiple_roles(roles=roles, location=location)
-
+    resume_text: str = "",
+    experience_level: str = "") -> dict:
+    jobs = await fetch_multiple_roles(
+        roles=roles,
+        location=location,
+        experience_level=experience_level
+    )
     if not jobs:
         return {"error": "No jobs found for given roles and location"}
 
