@@ -1,6 +1,7 @@
 import asyncio
 import json
 import httpx
+import os
 from collections import Counter
 from app.ingestion import JobPosting
 from typing import Optional
