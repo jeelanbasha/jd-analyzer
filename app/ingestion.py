@@ -31,7 +31,7 @@ def parse_job(raw: dict) -> JobPosting:
         description=raw.get("description", ""),
         salary_min=raw.get("salary_min"),
         salary_max=raw.get("salary_max"),
-        url=raw.get("redirect_url", "")
+        url=raw.get("redirect_url", ""),
         created=raw.get("created", "")
     )
 
