@@ -50,15 +50,6 @@ async def fetch_jobs(
         "content-type": "application/json"
     }
 
-    # map our levels to Adzuna's expected experience ranges
-    exp_map = {
-        "junior": "1",
-        "mid": "3",
-        "senior": "6"
-    }
-    if experience_level and experience_level in exp_map:
-        params["experience"] = exp_map[experience_level]
-
     async with httpx.AsyncClient() as client:
         response = await client.get(
             f"{ADZUNA_BASE_URL}/1",

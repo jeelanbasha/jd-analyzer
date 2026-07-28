@@ -7,22 +7,22 @@ async def run_mentor_agent(
     roles: list[str],
     location: str,
     resume_text: str = "",
-    experience_level: str = "") -> dict:
-    jobs = await fetch_multiple_roles(
-        roles=roles,
-        location=location,
-        experience_level=experience_level
-    )
+    experience_level: str = ""
+) -> dict:
+    jobs = await fetch_multiple_roles(roles=roles, location=location)
+
     if not jobs:
         return {"error": "No jobs found for given roles and location"}
 
-    print(f"[Mentor] Storing {len(jobs)} jobs in vector DB...")
     store_jobs(jobs)
-
-    print(f"[Mentor] Analyzing jobs with Claude...")
     analyses = await analyze_jobs_batch(jobs, batch_size=5)
 
-    print(f"[Mentor] Computing skill frequency...")
+    # filter by experience level after Claude extracts it
+    if experience_level and experience_level != "":
+        analyses = [a for a in analyses if a.get("level", "").lower() == experience_level.lower()]
+        if not analyses:
+            analyses = await analyze_jobs_batch(jobs, batch_size=5)  # fallback to all if filter too strict
+
     report = compute_skill_frequency(analyses)
 
     similar_jobs = []
