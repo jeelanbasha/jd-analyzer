@@ -907,32 +907,40 @@ async function analyze() {
       setStep(stepIndex);
     }, 15000);
 
-    pollInterval = setInterval(async () => {
-      try {
-        const poll = await fetch(`${API_BASE}/mentor/status/${job_id}`);
-        const data = await poll.json();
+    let pollAttempts = 0;
 
-        if (data.status === 'done') {
-          clearInterval(pollInterval);
-          clearInterval(stepTimer);
-          setStep(5);
-          setTimeout(() => renderResults(data.result), 500);
-        } else if (data.status === 'error') {
-          clearInterval(pollInterval);
-          clearInterval(stepTimer);
-          showError(data.error || 'Something went wrong. Try again.');
-          resetUI();
-        }
-      } catch(e) {
-        clearInterval(pollInterval);
-        clearInterval(stepTimer);
-        showError('Lost connection. Please try again.');
-        resetUI();
-      }
-    }, 5000);
+pollInterval = setInterval(async () => {
+  pollAttempts++;
+  console.log(`Polling attempt ${pollAttempts} for job ${job_id}`);
+  
+  try {
+    const poll = await fetch(`${API_BASE}/mentor/status/${job_id}`);
+    console.log('Poll status:', poll.status);
+    const data = await poll.json();
+    console.log('Poll data:', data.status);
 
+    if (data.status === 'done') {
+      clearInterval(pollInterval);
+      clearInterval(stepTimer);
+      setStep(5);
+      setTimeout(() => renderResults(data.result), 500);
+    } else if (data.status === 'error') {
+      clearInterval(pollInterval);
+      clearInterval(stepTimer);
+      showError(data.error || 'Something went wrong.');
+      resetUI();
+    }
   } catch(e) {
-    showError(e.message || 'Could not connect to the server.');
+    console.error('Poll error:', e);
+    clearInterval(pollInterval);
+    clearInterval(stepTimer);
+    showError('Lost connection. Please try again.');
+    resetUI();
+  }
+}, 5000);
+  } catch(e) {
+    console.error('Analyze error:', e);
+    showError('Failed to start analysis. Please try again.');
     resetUI();
   }
 }
