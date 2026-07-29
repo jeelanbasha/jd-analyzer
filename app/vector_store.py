@@ -26,7 +26,13 @@ def embed(texts: list[str]) -> list[list[float]]:
 
 def store_jobs(jobs: list[JobPosting]) -> None:
     collection = get_collection("job_descriptions")
-
+    
+    # clear existing jobs before storing new batch
+    # so matches are always from the current search
+    existing = collection.get()
+    if existing["ids"]:
+        collection.delete(ids=existing["ids"])
+    
     texts = [
         f"{job.title} at {job.company}. {job.description}"
         for job in jobs
