@@ -6,10 +6,13 @@ from anthropic import Anthropic
 from app.mentor_agent import run_mentor_agent
 from typing import Optional
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 import json
 import re
 import uuid
 import asyncio
+
 
 load_dotenv()
 
@@ -21,6 +24,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
+
+@app.get("/")
+def serve_frontend():
+    return FileResponse("frontend/index.html")
 client = Anthropic()
 
 # keep these for Swagger UI documentation
