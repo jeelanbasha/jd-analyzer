@@ -11,6 +11,40 @@ ANALYZER_URL = os.getenv(
     "http://localhost:8000/analyze-jd"
 )
 
+# skill normalization map — common abbreviations to full names
+SKILL_ALIASES = {
+    "qa": "quality assurance",
+    "qc": "quality control",
+    "ml": "machine learning",
+    "ai": "artificial intelligence",
+    "nlp": "natural language processing",
+    "cv": "computer vision",
+    "dl": "deep learning",
+    "rl": "reinforcement learning",
+    "llm": "large language models",
+    "pm": "product management",
+    "ba": "business analysis",
+    "ui": "user interface design",
+    "ux": "user experience design",
+    "ci/cd": "continuous integration and deployment",
+    "swe": "software engineering",
+    "sre": "site reliability engineering",
+    "fmea": "failure mode effects analysis",
+    "spc": "statistical process control",
+    "gd&t": "geometric dimensioning and tolerancing",
+    "erp": "enterprise resource planning",
+    "crm": "customer relationship management",
+    "kpi": "key performance indicators",
+    "scm": "supply chain management",
+    "plm": "product lifecycle management",
+    "cad": "computer aided design",
+    "cam": "computer aided manufacturing",
+}
+
+def normalize_skill(skill: str) -> str:
+    cleaned = skill.lower().strip()
+    return SKILL_ALIASES.get(cleaned, cleaned)
+
 async def analyze_single_job(
     client: httpx.AsyncClient,
     job: JobPosting
@@ -50,7 +84,7 @@ async def analyze_jobs_batch(
 
     for i in range(0, len(jobs), batch_size):
         batch = jobs[i:i + batch_size]
-        print(f"Analyzing batch {i//batch_size + 1} of {len(jobs)//batch_size + 1}...")
+        print(f"Analyzing batch {i//batch_size + 1} of {-(-len(jobs)//batch_size)}...")
 
         async with httpx.AsyncClient() as client:
             tasks = [analyze_single_job(client, job) for job in batch]
@@ -71,12 +105,21 @@ def compute_skill_frequency(analyses: list[dict]) -> dict:
 
     for analysis in analyses:
         for skill in analysis.get("required_skills", []):
-            required_counter[skill.lower().strip()] += 1
+            normalized = normalize_skill(skill)
+            required_counter[normalized] += 1
         for skill in analysis.get("nice_to_have", []):
-            nice_counter[skill.lower().strip()] += 1
+            normalized = normalize_skill(skill)
+            nice_counter[normalized] += 1
         level_counter[analysis.get("level", "unknown")] += 1
 
     total = len(analyses)
+    if total == 0:
+        return {
+            "total_jobs_analyzed": 0,
+            "top_required_skills": [],
+            "top_nice_to_have": [],
+            "level_distribution": {}
+        }
 
     return {
         "total_jobs_analyzed": total,
@@ -121,11 +164,7 @@ if __name__ == "__main__":
         )
 
         print(f"\nAnalyzing {len(jobs)} jobs with Claude...")
-        print("Make sure your FastAPI server is running: uvicorn app.main:app --reload")
-        print()
-
         analyses = await analyze_jobs_batch(jobs, batch_size=5)
-
         report = compute_skill_frequency(analyses)
         print_market_report(report)
 

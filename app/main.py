@@ -8,6 +8,7 @@ from typing import Optional
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+from app.gap_analyzer import analyze_resume_gap
 import json
 import re
 import uuid
@@ -126,8 +127,8 @@ async def analyze_jd(request: Request):
             "content": f"""Analyze this job description and extract information.
 Return ONLY raw JSON. No markdown. No backticks. No explanation.
 Just the JSON object starting with {{ and ending with }}. Use these exact keys:
-- required_skills (list of strings)
-- nice_to_have (list of strings)
+- required_skills (list of strings — use full names not abbreviations, e.g. "quality assurance" not "QA", "machine learning" not "ML", "product management" not "PM", "continuous integration" not "CI/CD")
+- nice_to_have (list of strings — normalized full names)
 - years_experience (string)
 - level (junior/mid/senior)
 - red_flags (list of strings)

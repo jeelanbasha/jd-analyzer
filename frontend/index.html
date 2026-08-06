@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Career Agent — AI Job Market Intelligence</title>
+<title>Career Agent — Job Market Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -30,604 +30,123 @@
   --border-light: rgba(0,0,0,0.08);
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--white);
-  color: var(--black);
-  min-height: 100vh;
-  display: flex;
-}
+body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--black); min-height: 100vh; display: flex; }
 
-/* Sidebar */
-.sidebar {
-  width: 360px;
-  min-width: 360px;
-  background: var(--black);
-  min-height: 100vh;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
-}
+.sidebar { width: 360px; min-width: 360px; background: var(--black); min-height: 100vh; padding: 2rem; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 2.5rem;
-}
-
-.logo-mark {
-  width: 32px;
-  height: 32px;
-  background: var(--teal);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+.logo { display: flex; align-items: center; gap: 10px; margin-bottom: 2.5rem; }
+.logo-mark { width: 32px; height: 32px; background: var(--teal); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
 .logo-mark svg { width: 18px; height: 18px; }
+.logo-text { font-size: 15px; font-weight: 600; color: white; letter-spacing: -0.3px; }
+.logo-sub { font-size: 11px; color: var(--gray); letter-spacing: 0.05em; text-transform: uppercase; }
 
-.logo-text {
-  font-size: 15px;
-  font-weight: 600;
-  color: white;
-  letter-spacing: -0.3px;
-}
-
-.logo-sub {
-  font-size: 11px;
-  color: var(--gray);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.section-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 0.75rem;
-}
+.section-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); margin-bottom: 0.75rem; }
 
 .field { margin-bottom: 1.25rem; }
-
-.field label {
-  display: block;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 6px;
-}
-
-.field input, .field select {
-  width: 100%;
-  background: var(--black-2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 14px;
-  font-size: 14px;
-  color: white;
-  font-family: 'Inter', sans-serif;
-  outline: none;
-  transition: border-color 0.15s;
-}
-
+.field input, .field select { width: 100%; background: var(--black-2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; font-size: 14px; color: white; font-family: 'Inter', sans-serif; outline: none; transition: border-color 0.15s; }
 .field input::placeholder { color: rgba(255,255,255,0.2); }
-
-.field input:focus, .field select:focus {
-  border-color: var(--teal);
-}
-
+.field input:focus, .field select:focus { border-color: var(--teal); }
 .field select option { background: var(--black-2); }
 
-.roles-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 8px;
-}
-
-.role-tag {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--black-3);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 4px 10px 4px 12px;
-  font-size: 12px;
-  color: rgba(255,255,255,0.8);
-}
-
-.role-tag button {
-  background: none;
-  border: none;
-  color: var(--gray);
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 1;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-
+.roles-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.role-tag { display: flex; align-items: center; gap: 6px; background: var(--black-3); border: 1px solid var(--border); border-radius: 20px; padding: 4px 10px 4px 12px; font-size: 12px; color: rgba(255,255,255,0.8); }
+.role-tag button { background: none; border: none; color: var(--gray); cursor: pointer; font-size: 14px; line-height: 1; padding: 0; display: flex; align-items: center; }
 .role-tag button:hover { color: var(--coral); }
 
-.add-role-row {
-  display: flex;
-  gap: 6px;
-  margin-top: 8px;
-}
-
-.add-role-row input {
-  flex: 1;
-  background: var(--black-2);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 13px;
-  color: white;
-  font-family: 'Inter', sans-serif;
-  outline: none;
-}
-
+.add-role-row { display: flex; gap: 6px; margin-top: 8px; }
+.add-role-row input { flex: 1; background: var(--black-2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 12px; font-size: 13px; color: white; font-family: 'Inter', sans-serif; outline: none; }
 .add-role-row input:focus { border-color: var(--teal); }
 .add-role-row input::placeholder { color: rgba(255,255,255,0.2); }
 
-.btn-add {
-  background: var(--black-3);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 14px;
-  font-size: 13px;
-  color: white;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background 0.15s;
-}
-
+.btn-add { background: var(--black-3); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; font-size: 13px; color: white; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
 .btn-add:hover { background: var(--black-2); border-color: var(--teal); }
 
-.divider {
-  height: 1px;
-  background: var(--border);
-  margin: 1.5rem 0;
-}
+.divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
 
-.upload-area {
-  border: 1.5px dashed rgba(255,255,255,0.15);
-  border-radius: 10px;
-  padding: 1.5rem;
-  text-align: center;
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
-  position: relative;
-}
-
-.upload-area:hover {
-  border-color: var(--teal);
-  background: rgba(29,158,117,0.05);
-}
-
-.upload-area input[type="file"] {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-}
-
-.upload-icon {
-  width: 36px;
-  height: 36px;
-  background: var(--black-3);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 10px;
-}
-
+.upload-area { border: 1.5px dashed rgba(255,255,255,0.15); border-radius: 10px; padding: 1.5rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; position: relative; }
+.upload-area:hover { border-color: var(--teal); background: rgba(29,158,117,0.05); }
+.upload-area input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.upload-icon { width: 36px; height: 36px; background: var(--black-3); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
 .upload-icon svg { width: 18px; height: 18px; color: var(--teal); }
-
-.upload-text {
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.5;
-}
-
+.upload-text { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
 .upload-text strong { color: rgba(255,255,255,0.8); font-weight: 500; }
+.upload-name { margin-top: 8px; font-size: 12px; color: var(--teal); font-family: 'JetBrains Mono', monospace; word-break: break-all; }
 
-.upload-name {
-  margin-top: 8px;
-  font-size: 12px;
-  color: var(--teal);
-  font-family: 'JetBrains Mono', monospace;
-  word-break: break-all;
-}
-
-.btn-analyze {
-  width: 100%;
-  background: var(--teal);
-  border: none;
-  border-radius: 10px;
-  padding: 14px;
-  font-size: 14px;
-  font-weight: 600;
-  color: white;
-  cursor: pointer;
-  font-family: 'Inter', sans-serif;
-  transition: background 0.15s, transform 0.1s;
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
+.btn-analyze { width: 100%; background: var(--teal); border: none; border-radius: 10px; padding: 14px; font-size: 14px; font-weight: 600; color: white; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.15s, transform 0.1s; margin-top: auto; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .btn-analyze:hover { background: #19896A; }
 .btn-analyze:active { transform: scale(0.98); }
 .btn-analyze:disabled { background: var(--black-3); color: var(--gray); cursor: not-allowed; transform: none; }
 
-/* Main panel */
-.main {
-  flex: 1;
-  padding: 2.5rem;
-  min-height: 100vh;
-}
+.main { flex: 1; padding: 2.5rem; min-height: 100vh; }
 
-/* Empty state */
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  text-align: center;
-  gap: 1rem;
-}
-
-.empty-icon {
-  width: 64px;
-  height: 64px;
-  background: var(--white-2);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+.empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; text-align: center; gap: 1rem; }
+.empty-icon { width: 64px; height: 64px; background: var(--white-2); border-radius: 16px; display: flex; align-items: center; justify-content: center; }
 .empty-icon svg { width: 32px; height: 32px; color: var(--gray); }
+.empty-title { font-size: 20px; font-weight: 600; color: var(--black); letter-spacing: -0.4px; }
+.empty-sub { font-size: 14px; color: var(--gray); max-width: 320px; line-height: 1.6; }
 
-.empty-title {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--black);
-  letter-spacing: -0.4px;
-}
-
-.empty-sub {
-  font-size: 14px;
-  color: var(--gray);
-  max-width: 320px;
-  line-height: 1.6;
-}
-
-/* Loading state */
-.loading-state {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 60vh;
-  gap: 1.5rem;
-}
-
-.loading-ring {
-  width: 48px;
-  height: 48px;
-  border: 3px solid var(--white-2);
-  border-top-color: var(--teal);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
+.loading-state { display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 60vh; gap: 1.5rem; }
+.loading-ring { width: 48px; height: 48px; border: 3px solid var(--white-2); border-top-color: var(--teal); border-radius: 50%; animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
-
-.loading-steps {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-align: left;
-  min-width: 260px;
-}
-
-.loading-step {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--gray);
-  transition: color 0.3s;
-}
-
+.loading-steps { display: flex; flex-direction: column; gap: 8px; text-align: left; min-width: 260px; }
+.loading-step { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--gray); transition: color 0.3s; }
 .loading-step.active { color: var(--black); }
 .loading-step.done { color: var(--teal); }
-
-.step-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--gray-light);
-  flex-shrink: 0;
-  transition: background 0.3s;
-}
-
+.step-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gray-light); flex-shrink: 0; transition: background 0.3s; }
 .loading-step.active .step-dot { background: var(--teal); animation: pulse 1s ease infinite; }
 .loading-step.done .step-dot { background: var(--teal); }
-
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
-/* Results */
 .results { display: none; }
+.results-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2rem; }
+.results-title { font-size: 22px; font-weight: 600; letter-spacing: -0.5px; }
+.results-meta { font-size: 13px; color: var(--gray); font-family: 'JetBrains Mono', monospace; }
 
-.results-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-
-.results-title {
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-}
-
-.results-meta {
-  font-size: 13px;
-  color: var(--gray);
-  font-family: 'JetBrains Mono', monospace;
-}
-
-/* Stats row */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-bottom: 2rem;
-}
-
-.stat-card {
-  background: white;
-  border: 1px solid var(--border-light);
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-}
-
-.stat-label {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--gray);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 6px;
-}
-
-.stat-value {
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  color: var(--black);
-  font-family: 'JetBrains Mono', monospace;
-}
-
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 2rem; }
+.stat-card { background: white; border: 1px solid var(--border-light); border-radius: 12px; padding: 1rem 1.25rem; }
+.stat-label { font-size: 11px; font-weight: 500; color: var(--gray); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+.stat-value { font-size: 26px; font-weight: 600; letter-spacing: -0.5px; color: var(--black); font-family: 'JetBrains Mono', monospace; }
 .stat-value.teal { color: var(--teal-dark); }
 
-/* Grid layout */
-.grid-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
 .grid-1 { margin-bottom: 16px; }
 
-/* Cards */
-.card {
-  background: white;
-  border: 1px solid var(--border-light);
-  border-radius: 12px;
-  padding: 1.25rem;
-}
+.card { background: white; border: 1px solid var(--border-light); border-radius: 12px; padding: 1.25rem; }
+.card-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gray); margin-bottom: 1rem; }
 
-.card-title {
-  font-size: 12px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--gray);
-  margin-bottom: 1rem;
-}
+.skill-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.skill-name { font-size: 13px; color: var(--black); min-width: 160px; font-family: 'JetBrains Mono', monospace; text-transform: capitalize; }
+.skill-bar-wrap { flex: 1; height: 6px; background: var(--white-2); border-radius: 3px; overflow: hidden; }
+.skill-bar-fill { height: 100%; border-radius: 3px; background: var(--teal); width: 0; transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.skill-pct { font-size: 12px; color: var(--gray); font-family: 'JetBrains Mono', monospace; min-width: 32px; text-align: right; }
 
-/* Skill bars */
-.skill-bar-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
+.level-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.level-name { font-size: 13px; color: var(--black); min-width: 100px; text-transform: capitalize; }
+.level-bar-wrap { flex: 1; height: 8px; background: var(--white-2); border-radius: 4px; overflow: hidden; }
+.level-bar-fill { height: 100%; border-radius: 4px; width: 0; transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.level-count { font-size: 12px; color: var(--gray); font-family: 'JetBrains Mono', monospace; min-width: 24px; text-align: right; }
 
-.skill-name {
-  font-size: 13px;
-  color: var(--black);
-  min-width: 160px;
-  font-family: 'JetBrains Mono', monospace;
-  text-transform: capitalize;
-}
-
-.skill-bar-wrap {
-  flex: 1;
-  height: 6px;
-  background: var(--white-2);
-  border-radius: 3px;
-  overflow: hidden;
-}
-
-.skill-bar-fill {
-  height: 100%;
-  border-radius: 3px;
-  background: var(--teal);
-  width: 0;
-  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.skill-pct {
-  font-size: 12px;
-  color: var(--gray);
-  font-family: 'JetBrains Mono', monospace;
-  min-width: 32px;
-  text-align: right;
-}
-
-/* Level distribution */
-.level-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.level-name {
-  font-size: 13px;
-  color: var(--black);
-  min-width: 100px;
-  text-transform: capitalize;
-}
-
-.level-bar-wrap {
-  flex: 1;
-  height: 8px;
-  background: var(--white-2);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.level-bar-fill {
-  height: 100%;
-  border-radius: 4px;
-  width: 0;
-  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.level-count {
-  font-size: 12px;
-  color: var(--gray);
-  font-family: 'JetBrains Mono', monospace;
-  min-width: 24px;
-  text-align: right;
-}
-
-/* Matched jobs */
-.job-card {
-  border: 1px solid var(--border-light);
-  border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 10px;
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  text-decoration: none;
-  transition: border-color 0.15s, box-shadow 0.15s;
-  background: white;
-}
-
-.job-card:hover {
-  border-color: var(--purple);
-  box-shadow: 0 2px 12px rgba(60,52,137,0.08);
-}
-
-.job-sim {
-  min-width: 44px;
-  height: 44px;
-  border-radius: 10px;
-  background: var(--purple-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--purple);
-  font-family: 'JetBrains Mono', monospace;
-}
-
+.job-card { border: 1px solid var(--border-light); border-radius: 10px; padding: 1rem; margin-bottom: 10px; display: flex; gap: 12px; align-items: flex-start; text-decoration: none; transition: border-color 0.15s, box-shadow 0.15s; background: white; }
+.job-card:hover { border-color: var(--purple); box-shadow: 0 2px 12px rgba(60,52,137,0.08); }
+.job-sim { min-width: 44px; height: 44px; border-radius: 10px; background: var(--purple-light); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: var(--purple); font-family: 'JetBrains Mono', monospace; }
 .job-info { flex: 1; min-width: 0; }
-
-.job-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--black);
-  margin-bottom: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.job-company {
-  font-size: 12px;
-  color: var(--gray);
-  margin-bottom: 4px;
-}
-
-.job-location {
-  font-size: 11px;
-  color: var(--gray-light);
-  font-family: 'JetBrains Mono', monospace;
-}
-
-.job-arrow {
-  color: var(--gray-light);
-  font-size: 16px;
-  margin-top: 2px;
-  transition: color 0.15s;
-}
-
+.job-title { font-size: 14px; font-weight: 500; color: var(--black); margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.job-company { font-size: 12px; color: var(--gray); margin-bottom: 4px; }
+.job-location { font-size: 11px; color: var(--gray-light); font-family: 'JetBrains Mono', monospace; }
+.job-arrow { color: var(--gray-light); font-size: 16px; margin-top: 2px; transition: color 0.15s; }
 .job-card:hover .job-arrow { color: var(--purple); }
 
-/* Nice to have pills */
 .pills-wrap { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill { font-size: 12px; padding: 4px 10px; border-radius: 20px; background: var(--amber-light); color: var(--amber); font-family: 'JetBrains Mono', monospace; text-transform: capitalize; }
 
-.pill {
-  font-size: 12px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  background: var(--amber-light);
-  color: var(--amber);
-  font-family: 'JetBrains Mono', monospace;
-  text-transform: capitalize;
-}
+.error-banner { display: none; background: var(--coral-light); border: 1px solid rgba(216,90,48,0.2); border-radius: 10px; padding: 1rem 1.25rem; font-size: 13px; color: var(--coral); margin-bottom: 1rem; }
 
-/* Error state */
-.error-banner {
-  display: none;
-  background: var(--coral-light);
-  border: 1px solid rgba(216,90,48,0.2);
-  border-radius: 10px;
-  padding: 1rem 1.25rem;
-  font-size: 13px;
-  color: var(--coral);
-  margin-bottom: 1rem;
-}
+.gap-stat { background: var(--white-2); border-radius: 10px; padding: 1rem; text-align: center; }
+.gap-stat-label { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+.gap-stat-value { font-size: 28px; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+.gap-row { padding: 10px 0; border-bottom: 1px solid var(--white-2); }
+.gap-row:last-child { border-bottom: none; }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--black-3); border-radius: 3px; }
@@ -643,7 +162,6 @@ body {
 </head>
 <body>
 
-<!-- Sidebar -->
 <aside class="sidebar">
   <div class="logo">
     <div class="logo-mark">
@@ -654,7 +172,7 @@ body {
     </div>
     <div>
       <div class="logo-text">Career Agent</div>
-      <div class="logo-sub">AI market intelligence</div>
+      <div class="logo-sub">Job market intelligence</div>
     </div>
   </div>
 
@@ -697,7 +215,6 @@ body {
   </div>
 
   <div style="height:1.5rem"></div>
-
   <div class="error-banner" id="error-banner"></div>
 
   <button class="btn-analyze" id="btn-analyze" onclick="analyze()">
@@ -708,10 +225,8 @@ body {
   </button>
 </aside>
 
-<!-- Main panel -->
 <main class="main">
 
-  <!-- Empty state -->
   <div class="empty-state" id="empty-state">
     <div class="empty-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -722,68 +237,35 @@ body {
     <div class="empty-sub">Add the roles you're targeting, upload your resume, and get real market intelligence from live job postings.</div>
   </div>
 
-  <!-- Loading state -->
   <div class="loading-state" id="loading-state">
     <div class="loading-ring"></div>
     <div class="loading-steps">
-      <div class="loading-step" id="step-1">
-        <div class="step-dot"></div>
-        Searching job boards
-      </div>
-      <div class="loading-step" id="step-2">
-        <div class="step-dot"></div>
-        Analyzing job descriptions with Claude
-      </div>
-      <div class="loading-step" id="step-3">
-        <div class="step-dot"></div>
-        Building skill frequency map
-      </div>
-      <div class="loading-step" id="step-4">
-        <div class="step-dot"></div>
-        Matching against your profile
-      </div>
-      <div class="loading-step" id="step-5">
-        <div class="step-dot"></div>
-        Generating market report
-      </div>
+      <div class="loading-step" id="step-1"><div class="step-dot"></div>Searching job boards</div>
+      <div class="loading-step" id="step-2"><div class="step-dot"></div>Analyzing job descriptions with Claude</div>
+      <div class="loading-step" id="step-3"><div class="step-dot"></div>Building skill frequency map</div>
+      <div class="loading-step" id="step-4"><div class="step-dot"></div>Matching against your profile</div>
+      <div class="loading-step" id="step-5"><div class="step-dot"></div>Generating market report</div>
     </div>
   </div>
 
-  <!-- Results -->
   <div class="results" id="results">
     <div class="results-header">
       <div class="results-title">Market intelligence report</div>
       <div class="results-meta" id="results-meta"></div>
     </div>
 
-    <!-- Stats -->
     <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-label">Jobs found</div>
-        <div class="stat-value teal" id="stat-found">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Jobs analyzed</div>
-        <div class="stat-value" id="stat-analyzed">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Top skill match</div>
-        <div class="stat-value" id="stat-top-skill" style="font-size:14px;padding-top:6px">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-label">Best match</div>
-        <div class="stat-value" id="stat-best-match" style="font-size:14px;padding-top:6px">—</div>
-      </div>
+      <div class="stat-card"><div class="stat-label">Jobs found</div><div class="stat-value teal" id="stat-found">—</div></div>
+      <div class="stat-card"><div class="stat-label">Jobs analyzed</div><div class="stat-value" id="stat-analyzed">—</div></div>
+      <div class="stat-card"><div class="stat-label">Top skill match</div><div class="stat-value" id="stat-top-skill" style="font-size:14px;padding-top:6px">—</div></div>
+      <div class="stat-card"><div class="stat-label">Best match</div><div class="stat-value" id="stat-best-match" style="font-size:14px;padding-top:6px">—</div></div>
     </div>
 
     <div class="grid-2">
-      <!-- Required skills -->
       <div class="card">
         <div class="card-title">Required skills — market demand</div>
         <div id="skills-list"></div>
       </div>
-
-      <!-- Matched jobs -->
       <div class="card">
         <div class="card-title">Roles matching your profile</div>
         <div id="jobs-list"></div>
@@ -791,31 +273,36 @@ body {
     </div>
 
     <div class="grid-2">
-      <!-- Level distribution -->
       <div class="card">
         <div class="card-title">Role level distribution</div>
         <div id="level-list"></div>
       </div>
-
-      <!-- Nice to have -->
       <div class="card">
         <div class="card-title">Nice-to-have skills</div>
         <div id="nice-list"></div>
       </div>
     </div>
+
+    <!-- Gap Analysis -->
+    <div class="grid-1" id="gap-section" style="display:none">
+      <div class="card">
+        <div class="card-title">Resume gap analysis</div>
+        <div id="gap-loading" style="font-size:13px;color:var(--gray);padding:1rem 0">Analyzing your resume against market data...</div>
+        <div id="gap-content"></div>
+      </div>
+    </div>
+
   </div>
 
 </main>
 
 <script>
-//const API_BASE = 'https://jd-analyzer-production-2e7b.up.railway.app';
 const API_BASE = '';
 
-let roles = ['AI Engineer', 'LLM Engineer'];
+let roles = [];
 let resumeText = '';
 let pollInterval = null;
 
-// Init
 renderRoles();
 
 document.getElementById('role-input').addEventListener('keydown', e => {
@@ -883,6 +370,7 @@ async function analyze() {
 
   document.getElementById('empty-state').style.display = 'none';
   document.getElementById('results').style.display = 'none';
+  document.getElementById('gap-section').style.display = 'none';
   document.getElementById('loading-state').style.display = 'flex';
 
   setStep(1);
@@ -895,7 +383,7 @@ async function analyze() {
         roles,
         location,
         experience_level: document.getElementById('experience').value,
-        resume_text: resumeText || `Software developer with experience in ${roles.join(', ')}.`
+        resume_text: resumeText || `Professional with experience in ${roles.join(', ')} and related technologies.`
       })
     });
 
@@ -909,39 +397,33 @@ async function analyze() {
     }, 15000);
 
     let pollAttempts = 0;
+    pollInterval = setInterval(async () => {
+      pollAttempts++;
+      try {
+        const poll = await fetch(`${API_BASE}/mentor/status/${job_id}`);
+        const data = await poll.json();
 
-pollInterval = setInterval(async () => {
-  pollAttempts++;
-  console.log(`Polling attempt ${pollAttempts} for job ${job_id}`);
-  
-  try {
-    const poll = await fetch(`${API_BASE}/mentor/status/${job_id}`);
-    console.log('Poll status:', poll.status);
-    const data = await poll.json();
-    console.log('Poll data:', data.status);
+        if (data.status === 'done') {
+          clearInterval(pollInterval);
+          clearInterval(stepTimer);
+          setStep(5);
+          setTimeout(() => renderResults(data.result), 500);
+        } else if (data.status === 'error') {
+          clearInterval(pollInterval);
+          clearInterval(stepTimer);
+          showError(data.error || 'Something went wrong.');
+          resetUI();
+        }
+      } catch(e) {
+        clearInterval(pollInterval);
+        clearInterval(stepTimer);
+        showError('Lost connection. Please try again.');
+        resetUI();
+      }
+    }, 5000);
 
-    if (data.status === 'done') {
-      clearInterval(pollInterval);
-      clearInterval(stepTimer);
-      setStep(5);
-      setTimeout(() => renderResults(data.result), 500);
-    } else if (data.status === 'error') {
-      clearInterval(pollInterval);
-      clearInterval(stepTimer);
-      showError(data.error || 'Something went wrong.');
-      resetUI();
-    }
   } catch(e) {
-    console.error('Poll error:', e);
-    clearInterval(pollInterval);
-    clearInterval(stepTimer);
-    showError('Lost connection. Please try again.');
-    resetUI();
-  }
-}, 5000);
-  } catch(e) {
-    console.error('Analyze error:', e);
-    showError('Failed to start analysis. Please try again.');
+    showError(e.message || 'Failed to start analysis.');
     resetUI();
   }
 }
@@ -955,10 +437,7 @@ function resetUI() {
 }
 
 const LEVEL_COLORS = {
-  senior: '#1D9E75',
-  mid: '#3C3489',
-  junior: '#BA7517',
-  default: '#888780'
+  senior: '#1D9E75', mid: '#3C3489', junior: '#BA7517', default: '#888780'
 };
 
 function renderResults(data) {
@@ -966,68 +445,51 @@ function renderResults(data) {
   document.getElementById('results').style.display = 'block';
 
   const now = new Date();
-  document.getElementById('results-meta').textContent =
-    `${roles.join(' · ')} · ${now.toLocaleTimeString()}`;
-
-  document.getElementById('stat-found').textContent = data.jobs_found;
-  document.getElementById('stat-analyzed').textContent = data.jobs_analyzed;
+  document.getElementById('results-meta').textContent = `${roles.join(' · ')} · ${now.toLocaleTimeString()}`;
+  document.getElementById('stat-found').textContent = data.jobs_found || '0';
+  document.getElementById('stat-analyzed').textContent = data.jobs_analyzed || '0';
 
   const topSkill = data.top_required_skills?.[0];
-  document.getElementById('stat-top-skill').textContent =
-    topSkill ? `${topSkill.skill} (${topSkill.percentage}%)` : '—';
+  document.getElementById('stat-top-skill').textContent = topSkill ? `${topSkill.skill} (${topSkill.percentage}%)` : '—';
 
   const bestJob = data.similar_to_profile?.[0];
-  document.getElementById('stat-best-match').textContent =
-    bestJob ? `${Math.round(bestJob.similarity * 100)}% match` : '—';
+  document.getElementById('stat-best-match').textContent = bestJob ? `${Math.round(bestJob.similarity * 100)}% match` : '—';
 
   const btn = document.getElementById('btn-analyze');
   btn.disabled = false;
   btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Refresh analysis`;
 
-  // Skills
- const skillsList = document.getElementById('skills-list');
-skillsList.innerHTML = (data.top_required_skills || []).slice(0, 10).map(s => {
-  const name = s.skill.toUpperCase().split(' ').map(w =>
-    ['AI','LLM','ML','API','SQL','AWS','GCP','NLP','CV','ASIC','EDA','BSP'].includes(w.toUpperCase())
-      ? w.toUpperCase()
-      : w.charAt(0).toUpperCase() + w.slice(1)
-  ).join(' ');
-  return `
-    <div class="skill-bar-row">
-      <span class="skill-name">${name}</span>
-      <div class="skill-bar-wrap">
-        <div class="skill-bar-fill" data-pct="${s.percentage}"></div>
-      </div>
-      <span class="skill-pct">${s.percentage}%</span>
-    </div>
-  `;
-}).join('');
+  const ABBREVS = ['AI','LLM','ML','API','SQL','AWS','GCP','NLP','CV','ASIC','EDA','BSP','IOT','AR','VR'];
+  const skillsList = document.getElementById('skills-list');
+  skillsList.innerHTML = (data.top_required_skills || []).slice(0, 10).map(s => {
+    const name = s.skill.split(' ').map(w => ABBREVS.includes(w.toUpperCase()) ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    return `
+      <div class="skill-bar-row">
+        <span class="skill-name">${name}</span>
+        <div class="skill-bar-wrap"><div class="skill-bar-fill" data-pct="${s.percentage}"></div></div>
+        <span class="skill-pct">${s.percentage}%</span>
+      </div>`;
+  }).join('');
 
   setTimeout(() => {
-    document.querySelectorAll('.skill-bar-fill').forEach(el => {
-      el.style.width = el.dataset.pct + '%';
-    });
+    document.querySelectorAll('.skill-bar-fill').forEach(el => { el.style.width = el.dataset.pct + '%'; });
   }, 100);
 
-  // Jobs
   const jobsList = document.getElementById('jobs-list');
-jobsList.innerHTML = (data.similar_to_profile || []).map(job => {
-  const posted = job.created ? new Date(job.created).toLocaleDateString() : '';
-  return `
-    <a href="${job.url}" target="_blank" rel="noopener" class="job-card">
-      <div class="job-sim">${Math.round(job.similarity * 100)}%</div>
-      <div class="job-info">
-        <div class="job-title">${job.title}</div>
-        <div class="job-company">${job.company}</div>
-        <div class="job-location">${job.location}${posted ? ' · ' + posted : ''}</div>
-      </div>
-      <div class="job-arrow">→</div>
-    </a>
-  `;
-}).join('') || '<div style="font-size:13px;color:var(--gray)">Upload your resume for personalized matches.</div>';
+  jobsList.innerHTML = (data.similar_to_profile || []).map(job => {
+    const posted = job.created ? new Date(job.created).toLocaleDateString() : '';
+    return `
+      <a href="${job.url}" target="_blank" rel="noopener" class="job-card">
+        <div class="job-sim">${Math.round(job.similarity * 100)}%</div>
+        <div class="job-info">
+          <div class="job-title">${job.title}</div>
+          <div class="job-company">${job.company}</div>
+          <div class="job-location">${job.location}${posted ? ' · ' + posted : ''}</div>
+        </div>
+        <div class="job-arrow">→</div>
+      </a>`;
+  }).join('') || '<div style="font-size:13px;color:var(--gray)">Upload your resume for personalized matches.</div>';
 
-  // Levels
-  const levelList = document.getElementById('level-list');
   const levels = data.level_distribution || {};
   const cleanLevels = {};
   Object.entries(levels).forEach(([k, v]) => {
@@ -1036,33 +498,128 @@ jobsList.innerHTML = (data.similar_to_profile || []).map(job => {
   });
   const maxLevel = Math.max(...Object.values(cleanLevels), 1);
 
-  levelList.innerHTML = Object.entries(cleanLevels)
+  document.getElementById('level-list').innerHTML = Object.entries(cleanLevels)
     .sort((a, b) => b[1] - a[1])
     .map(([level, count]) => {
       const color = LEVEL_COLORS[level] || LEVEL_COLORS.default;
       return `
-      <div class="level-row">
-        <span class="level-name">${level}</span>
-        <div class="level-bar-wrap">
-          <div class="level-bar-fill" data-pct="${Math.round(count/maxLevel*100)}" style="background:${color}"></div>
-        </div>
-        <span class="level-count">${count}</span>
-      </div>
-    `}).join('');
+        <div class="level-row">
+          <span class="level-name">${level}</span>
+          <div class="level-bar-wrap"><div class="level-bar-fill" data-pct="${Math.round(count/maxLevel*100)}" style="background:${color}"></div></div>
+          <span class="level-count">${count}</span>
+        </div>`;
+    }).join('');
 
   setTimeout(() => {
-    document.querySelectorAll('.level-bar-fill').forEach(el => {
-      el.style.width = el.dataset.pct + '%';
-    });
+    document.querySelectorAll('.level-bar-fill').forEach(el => { el.style.width = el.dataset.pct + '%'; });
   }, 200);
 
-  // Nice to have
-  const niceList = document.getElementById('nice-list');
-  niceList.innerHTML = `<div class="pills-wrap">` +
-    (data.top_nice_to_have || []).slice(0, 12).map(s =>
-      `<span class="pill">${s.skill}</span>`
-    ).join('') +
+  document.getElementById('nice-list').innerHTML = `<div class="pills-wrap">` +
+    (data.top_nice_to_have || []).slice(0, 12).map(s => `<span class="pill">${s.skill}</span>`).join('') +
     `</div>`;
+
+  if (resumeText) runGapAnalysis(data);
+}
+
+async function runGapAnalysis(marketReport) {
+  if (!resumeText) return;
+
+  document.getElementById('gap-section').style.display = 'block';
+  document.getElementById('gap-loading').style.display = 'block';
+  document.getElementById('gap-content').innerHTML = '';
+
+  try {
+    const res = await fetch(`${API_BASE}/mentor/gap-analysis`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        resume_text: resumeText,
+        market_report: marketReport
+      })
+    });
+    const data = await res.json();
+    document.getElementById('gap-loading').style.display = 'none';
+    renderGapAnalysis(data);
+  } catch(e) {
+    document.getElementById('gap-loading').style.display = 'none';
+    document.getElementById('gap-content').innerHTML = '<div style="font-size:13px;color:var(--coral)">Gap analysis failed. Try again.</div>';
+    console.error('Gap analysis failed:', e);
+  }
+}
+
+function renderGapAnalysis(data) {
+  if (data.raw || !data.match_score) {
+    document.getElementById('gap-content').innerHTML = '<div style="font-size:13px;color:var(--gray)">Could not parse gap analysis. Try again.</div>';
+    return;
+  }
+
+  const priorityColor = { critical: '#D85A30', high: '#BA7517', medium: '#1D9E75' };
+
+  document.getElementById('gap-content').innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:1.5rem">
+      <div class="gap-stat">
+        <div class="gap-stat-label">Market match</div>
+        <div class="gap-stat-value" style="color:var(--teal-dark)">${data.match_score}%</div>
+      </div>
+      <div class="gap-stat">
+        <div class="gap-stat-label">Skills confirmed</div>
+        <div class="gap-stat-value">${(data.confirmed_skills || []).length}</div>
+      </div>
+      <div class="gap-stat">
+        <div class="gap-stat-label">Skills to learn</div>
+        <div class="gap-stat-value" style="color:var(--coral)">${(data.gap_skills || []).length}</div>
+      </div>
+    </div>
+
+    <div style="background:var(--white-2);border-radius:10px;padding:1rem;margin-bottom:1.25rem;font-size:13px;color:var(--black);line-height:1.7">
+      ${data.summary || ''}
+    </div>
+
+    ${data.strengths?.length ? `
+    <div style="margin-bottom:1.25rem">
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-dark);margin-bottom:8px">Your strengths</div>
+      ${data.strengths.map(s => `
+        <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--white-2);font-size:13px;color:var(--black)">
+          <span style="color:var(--teal)">✓</span> ${s}
+        </div>`).join('')}
+    </div>` : ''}
+
+    ${data.quick_wins?.length ? `
+    <div style="margin-bottom:1.25rem">
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);margin-bottom:8px">Quick wins — add to resume now</div>
+      ${data.quick_wins.map(w => `
+        <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--white-2);font-size:13px;color:var(--black)">
+          <span style="color:var(--purple)">→</span> ${w}
+        </div>`).join('')}
+    </div>` : ''}
+
+    ${data.gap_skills?.length ? `
+    <div style="margin-bottom:1.25rem">
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--coral);margin-bottom:8px">Skills to learn — prioritized by market demand</div>
+      ${data.gap_skills.map(s => `
+        <div class="gap-row">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <span style="font-size:13px;font-weight:500;color:var(--black);text-transform:capitalize">${s.skill}</span>
+            <div style="display:flex;gap:8px;align-items:center">
+              <span style="font-size:11px;color:var(--gray)">${s.learn_in_days} days</span>
+              <span style="font-size:11px;padding:2px 8px;border-radius:20px;background:${(priorityColor[s.priority]||'#888780')}22;color:${priorityColor[s.priority]||'#888780'}">${s.priority}</span>
+            </div>
+          </div>
+          <div style="font-size:12px;color:var(--gray)">→ ${s.resource}</div>
+        </div>`).join('')}
+    </div>` : ''}
+
+    ${data.learning_plan?.length ? `
+    <div>
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);margin-bottom:8px">Your learning plan</div>
+      ${data.learning_plan.map(w => `
+        <div class="gap-row">
+          <div style="font-size:12px;font-weight:600;color:var(--purple);margin-bottom:3px;font-family:'JetBrains Mono',monospace">Week ${w.week}</div>
+          <div style="font-size:13px;color:var(--black);margin-bottom:2px">${w.focus}</div>
+          <div style="font-size:12px;color:var(--gray)">Outcome: ${w.outcome}</div>
+        </div>`).join('')}
+    </div>` : ''}
+  `;
 }
 </script>
 </body>

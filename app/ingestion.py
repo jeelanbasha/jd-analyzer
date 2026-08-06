@@ -38,7 +38,7 @@ def parse_job(raw: dict) -> JobPosting:
 async def fetch_jobs(
     role: str,
     location: str = "United States",
-    count: int = 20,
+    count: int = 50,
     experience_level: str = ""
 ) -> list[JobPosting]:
     params = {
@@ -46,22 +46,35 @@ async def fetch_jobs(
         "app_key": ADZUNA_APP_KEY,
         "what": role,
         "where": location,
-        "results_per_page": count,
-        "content-type": "application/json"
+        "results_per_page": min(count, 50),
+        "content-type": "application/json",
+        "what_and": role,
     }
 
-    async with httpx.AsyncClient() as client:
-        response = await client.get(
-            f"{ADZUNA_BASE_URL}/1",
-            params=params,
-            timeout=10.0
-        )
-        response.raise_for_status()
-        data = response.json()
+    all_jobs = []
+    pages_to_fetch = max(1, count // 50)
 
-    jobs = [parse_job(job) for job in data.get("results", [])]
-    print(f"Fetched {len(jobs)} jobs for '{role}' in '{location}'")
-    return jobs
+    async with httpx.AsyncClient() as client:
+        for page in range(1, pages_to_fetch + 1):
+            try:
+                response = await client.get(
+                    f"{ADZUNA_BASE_URL}/{page}",
+                    params=params,
+                    timeout=15.0
+                )
+                response.raise_for_status()
+                data = response.json()
+                results = data.get("results", [])
+                if not results:
+                    break
+                all_jobs.extend([parse_job(job) for job in results])
+                print(f"Page {page}: fetched {len(results)} jobs for '{role}'")
+            except Exception as e:
+                print(f"Page {page} failed for '{role}': {e}")
+                break
+
+    print(f"Total fetched for '{role}': {len(all_jobs)} jobs")
+    return all_jobs
 
 async def fetch_multiple_roles(
     roles: list[str],
@@ -78,6 +91,7 @@ async def fetch_multiple_roles(
         else:
             all_jobs.extend(result)
 
+    # deduplicate by id
     seen_ids = set()
     unique_jobs = []
     for job in all_jobs:
@@ -91,13 +105,12 @@ async def fetch_multiple_roles(
 if __name__ == "__main__":
     async def main():
         jobs = await fetch_multiple_roles(
-            roles=["AI Engineer", "Machine Learning Engineer", "LLM Engineer"],
+            roles=["Quality Engineer", "Product Manager"],
             location="New York"
         )
         for job in jobs[:3]:
             print(f"\n{job.title} @ {job.company}")
             print(f"Location: {job.location}")
-            print(f"URL: {job.url}")
             print(f"Description preview: {job.description[:200]}...")
 
     asyncio.run(main())
