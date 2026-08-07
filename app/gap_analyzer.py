@@ -56,12 +56,25 @@ For learn_in_days be realistic. For resources be specific (exact course name, do
     )
 
     try:
-        text = message.content[0].text
-        text = text.strip()
-        if text.startswith("```"):
-            text = text.split("```")[1]
-            if text.startswith("json"):
-                text = text[4:]
-        return json.loads(text.strip())
-    except json.JSONDecodeError:
+        text = message.content[0].text.strip()
+        # aggressively strip all markdown formatting
+        if "```" in text:
+            # extract content between first ``` and last ```
+            parts = text.split("```")
+            # parts[1] contains the json (possibly with 'json' prefix)
+            if len(parts) >= 2:
+                text = parts[1]
+                if text.startswith("json"):
+                    text = text[4:]
+                text = text.strip()
+        return json.loads(text)
+    except (json.JSONDecodeError, IndexError):
+        # last resort — try to find JSON object in the text
+        try:
+            start = message.content[0].text.find("{")
+            end = message.content[0].text.rfind("}") + 1
+            if start != -1 and end > start:
+                return json.loads(message.content[0].text[start:end])
+        except json.JSONDecodeError:
+            pass
         return {"raw": message.content[0].text}
