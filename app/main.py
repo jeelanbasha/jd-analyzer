@@ -242,3 +242,20 @@ def get_status(job_id: str):
     if job_id not in jobs:
         raise HTTPException(status_code=404, detail="Job not found")
     return jobs[job_id]
+@app.post("/mentor/gap-analysis")
+async def gap_analysis(request: Request):
+    try:
+        body = parse_body(await request.body())
+        resume_text = body.get("resume_text", "")
+        market_report = body.get("market_report", {})
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Invalid request: {str(e)}")
+
+    if not resume_text:
+        raise HTTPException(status_code=400, detail="resume_text is required")
+
+    if not market_report:
+        raise HTTPException(status_code=400, detail="market_report is required")
+
+    result = analyze_resume_gap(resume_text, market_report)
+    return result
