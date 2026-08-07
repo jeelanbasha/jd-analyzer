@@ -538,6 +538,7 @@ async function runGapAnalysis(marketReport) {
       })
     });
     const data = await res.json();
+    console.log('Gap analysis response:', JSON.stringify(data).substring(0, 200));
     document.getElementById('gap-loading').style.display = 'none';
     renderGapAnalysis(data);
   } catch(e) {
@@ -548,7 +549,7 @@ async function runGapAnalysis(marketReport) {
 }
 
 function renderGapAnalysis(data) {
-  if (data.raw || !data.match_score) {
+  if (!data || data.raw || data.detail) {
     document.getElementById('gap-content').innerHTML = '<div style="font-size:13px;color:var(--gray)">Could not parse gap analysis. Try again.</div>';
     return;
   }
