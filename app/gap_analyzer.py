@@ -20,12 +20,12 @@ def analyze_resume_gap(
     }, indent=2)
 
     message = client.messages.create(
-    model="claude-sonnet-4-5",
-    max_tokens=2048,
-    messages=[{
-        "role": "user",
-        "content": f"""You are a senior hiring manager with expertise across software engineering, AI, embedded systems, and technology roles.
-                    Analyze this resume against the market skill requirements for the roles being targeted and return a gap analysis.
+        model="claude-sonnet-4-5",
+        max_tokens=2048,
+        messages=[{
+            "role": "user",
+            "content": f"""You are a senior hiring manager with expertise across software engineering, AI, embedded systems, and technology roles.
+Analyze this resume against the market skill requirements for the roles being targeted and return a gap analysis.
 
 RESUME:
 {resume_text}
@@ -33,7 +33,7 @@ RESUME:
 MARKET SKILL DATA (from {market_report.get('total_jobs_analyzed', 0)} real job postings):
 {skills_data}
 
-Return ONLY raw JSON with these exact keys:
+Return ONLY raw JSON. No markdown. No backticks. No explanation. Start your response with {{ and end with }}. Use these exact keys:
 {{
   "confirmed_skills": [
     {{"skill": "skill name", "evidence": "where in resume", "strength": "strong/moderate/basic"}}
@@ -56,6 +56,12 @@ For learn_in_days be realistic. For resources be specific (exact course name, do
     )
 
     try:
-        return json.loads(message.content[0].text)
+        text = message.content[0].text
+        text = text.strip()
+        if text.startswith("```"):
+            text = text.split("```")[1]
+            if text.startswith("json"):
+                text = text[4:]
+        return json.loads(text.strip())
     except json.JSONDecodeError:
         return {"raw": message.content[0].text}
